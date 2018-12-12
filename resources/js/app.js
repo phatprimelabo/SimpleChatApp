@@ -21,7 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
+Vue.component('message', require('./components/Message.vue'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -31,11 +31,15 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     data: {
-        message: ''
+        message: '',
+        chat:{
+            messages: [],
+        }
     },
-    method: {
+    methods: {
         send(){
-            console.log(this.message);
+            this.chat.messages.push(this.message);
+            this.message='';
         }
     }
 });
