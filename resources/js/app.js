@@ -31,15 +31,34 @@ Vue.component('message', require('./components/Message.vue'));
 const app = new Vue({
     el: '#app',
     data: {
+        inuser: '',
+        outuser: '',
         message: '',
         chat:{
             messages: [],
         }
     },
+    created() {
+        axios.get('/getname').then((response)=>{
+            this.inuser = response.data.name;
+        });
+    },
     methods: {
         send(){
-            this.chat.messages.push(this.message);
-            this.message='';
+            axios.post('/send',{
+                message: this.message
+            }).then(()=>{
+                this.message='';
+            });
         }
+    },
+    mounted(){
+        Echo.private('Chat-Room')
+            .listen('Chat', (data) => {
+                this.chat.messages.push({
+                    user: data.user,
+                    message: data.message
+                })
+            });
     }
 });

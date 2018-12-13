@@ -15,8 +15,8 @@
         <div class="row justify-content-center" id="app">
             <ul class="list-group col-lg-6">
                 <li class="list-group-item active">Chat App</li>
-                <message v-for="message in chat.messages">
-                    @{{message}}
+                <message v-for="message in chat.messages" v-bind:is_income="message.user==inuser" v-bind:user="message.user">
+                    @{{message.message}}
                 </message>
                 <input type="text" class="list-group-item" placeholder="Compose message" v-model="message" v-on:keyup.enter="send">
             </ul>
