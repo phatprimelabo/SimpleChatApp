@@ -55,3 +55,4 @@ window.Echo = new Echo({
     namespace: 'App.Event',
     encrypted: true
 });
+
