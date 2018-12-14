@@ -23,10 +23,28 @@ Route::get('/getname', function(){
     return response()->json(['name'=>Auth::user()->name]);
 });
 
+Route::get('/getrooms', function(){
+    if(Auth::user()){
+        $rooms = Auth::user()->rooms()->get();
+        $rooms_datas_response=[];
+        foreach ($rooms as $room){
+
+            $rooms_datas_response[] = ['id'=>$room->id, 'name'=>$room->name];
+        }
+
+        return response(json_encode($rooms_datas_response, JSON_UNESCAPED_UNICODE));
+    }
+
+});
+
 Route::post('/send',function(\Illuminate\Http\Request $request){
      event(new \App\Event\Chat($request->input('message'), Auth::user()));
      return response()->json(['message'=>$request->input('message')]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

@@ -25,6 +25,7 @@ Vue.use(VueChatScroll);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('message', require('./components/Message.vue'));
+Vue.component('room', require('./components/Room.vue'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -38,12 +39,20 @@ const app = new Vue({
         outuser: '',
         message: '',
         chat:{
+            room_name: '',
+            room_id: '',
             messages: [],
-        }
+        },
+
+        rooms: [],
     },
     created() {
         axios.get('/getname').then((response)=>{
             this.inuser = response.data.name;
+        });
+        axios.get('/getrooms').then((response)=>{
+            this.rooms = response.data;
+            console.log(this.rooms);
         });
     },
     methods: {
