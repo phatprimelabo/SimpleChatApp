@@ -17,6 +17,7 @@ class CreateUserRoomTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('room_id');
+            $table->integer('is_read')->unsigned()->default(0);
             $table->timestamps();
         });
     }

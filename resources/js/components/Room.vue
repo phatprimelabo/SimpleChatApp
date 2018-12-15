@@ -1,6 +1,9 @@
 <template>
     <button class="cpn-container text-left btn btn-block btn-outline-info" v-on:click="chat_this_room">
-        <li class="list-group-item">{{room.name}}</li>
+        <a href="#"><i v-if="!is_sameuser && !is_income" class="d-inline-block fas fa-user-circle fa-lg"></i></a>
+        <p class="d-inline-block text-primary chat-title">{{room.name}}</p>
+        <br>
+        <p v-if="room.messages.length>0" class="d-inline-block chat-content text-muted">{{room.messages[room.messages.length-1].user+': '+room.messages[room.messages.length-1].message}}</p>
     </button>
 </template>
 
@@ -25,6 +28,19 @@
 </script>
 <style scoped>
     .cpn-container{
-        padding: 0px;
+        padding: 15px;
+    }
+
+    .chat-content {
+        margin-bottom: 4px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        min-width: 16rem;
+        border-radius: 3px;
+    }
+    .chat-title {
+        margin-bottom: 4px;
+        padding-left: 6px;
+        border-radius: 3px;
     }
 </style>
