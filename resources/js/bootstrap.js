@@ -56,3 +56,5 @@ window.Echo = new Echo({
     encrypted: true
 });
 
+import Pusher from 'pusher-js';
+

@@ -6,28 +6,37 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         inuser: '',
-        chat:{
-            room_name: '',
-            room_id: '',
-            messages: [],
-        },
-        rooms: [],
+        messages: [], //{room_id: , user: , message}
+        curr_room_stt: false,
+        curr_room: null,
+        rooms: [],  //{(DB)id: ,DBname , messages:{user: , message: }}
     },
     getters:{
         rooms: state => {
            return state.rooms;
         },
-        chat: state => {
-           return state.chat;
-        },
         inuser: state => {
             return state.inuser;
+        },
+        curr_room: state => {
+            return state.rooms.find(room=>room.id == state.curr_room);
+        },
+        curr_room_stt: state => {
+            return state.curr_room_stt;
+        },
+        messages: state => {
+            return state.messages;
+        },
+        rooms_id_list: state => {
+            return state.rooms.map(room => room.id);
         }
     },
     mutations:{
+        // INITIAL
         init_getname: state => {
             axios.get('/getname').then((response)=>{
                 state.inuser = response.data.name;
+                console.log(state.inuser);
             });
         },
         init_getrooms: state => {
@@ -35,13 +44,46 @@ export const store = new Vuex.Store({
                state.rooms = response.data;
            });
        },
-        send_message: (state, message) => {
-            axios.post('/send',{
-                message: message
-            });
+
+
+        //SET CRR CHAT ROOM STT
+        set_crr_room: (state, id) => {
+            state.curr_room_stt = true;
+            state.curr_room = id;
+        },
+
+
+        //CHAT TASK
+        send_message: (state, payload) => {    //payload    {room_id: ,message:}
+                axios.post('/send', payload);
         },
         add_message: (state, payload) => {
-            state.chat.push(payload);
+            state.messages.push(payload);               //Asynchronus problem here
+            state.rooms.find(room=>room.id == payload.room_id).messages.push(payload);
+        },
+
+        //listern message
+        init_listen_message: state => {
+            state.rooms.forEach(room=>{
+                console.log(room)
+                Echo.private(`Chat-Room.RoomID-`+room.id)
+                    .listen('Chat', (data) => {
+                        commit('add_message',data);
+                    });
+            })
+        }
+    },
+    actions:{
+        init_getname: ({commit})=>{
+            commit('init_getname');
+        },
+        init_getrooms: ({commit})=>{
+            commit('init_getrooms');
+        },
+        init_listenChatApp: async ({commit})=>{
+            await commit('init_getname');
+            await commit('init_getrooms');
+            commit('init_listen_message');
         }
     }
 });

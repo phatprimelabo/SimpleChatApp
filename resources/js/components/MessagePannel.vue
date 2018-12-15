@@ -1,33 +1,37 @@
 <template>
-    <div class="col-lg-8">
-        <li class="list-group-item active">Current Chat</li>
-        <ul class="list-group chat-pannel p-2" v-chat-scroll >
-            <message v-for="(message, index) in chat.messages"
-                     v-bind:is_income="message.user==inuser"
-                     v-bind:is_sameuser="index>0?chat.messages[index-1].user==message.user:false"
-                     v-bind:user="message.user"
-                     v-bind:content="message.message">
+    <div class="col-lg-8" v-if="curr_room_stt">
+        <li class="list-group-item active"> {{curr_room.name}}</li>
+        <ul class="list-group chat-pannel p-2" v-chat-scroll>
+            <message v-for="(item, index) in curr_room.messages"
+                     v-bind:is_income="item.user==inuser"
+                     v-bind:is_sameuser="index>0? curr_room.messages[index-1].user==item.user : false"
+                     v-bind:user="item.user"
+                     v-bind:content="item.message">
             </message>
         </ul>
         <input style="width: 100%" type="text" class="list-group-item" placeholder="Compose message" v-model="message" v-on:keyup.enter="send">
     </div>
-
 </template>
 
 <script>
     import {mapGetters} from 'vuex'
     export default {
-        data:{
-          message:'',
+        data(){
+            return {
+                message: ''
+            };
         },
         computed:{
-            ...mapGetters(['inuser','chat'])
+            ...mapGetters(['inuser','curr_room','curr_room_stt'])
         },
         methods:{
             async send(){
-                await this.$store.commit('send_message',this.message);
+                await this.$store.commit('send_message', {room_id: this.curr_room.id, message: this.message});
                 this.message='';
             }
+        },
+        mounted(){
+            let sefl = this;
         }
     }
 </script>

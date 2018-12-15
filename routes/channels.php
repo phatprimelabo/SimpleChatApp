@@ -15,6 +15,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('Chat-Room', function () {
-    return true;
+Broadcast::channel('Chat-Room.RoomID-{room_id}', function ($user, $room_id) {
+    $check = \App\UserRoom::where('user_id', $user->id)->where('room_id',$room_id)->get();
+    return !empty($check);
 });

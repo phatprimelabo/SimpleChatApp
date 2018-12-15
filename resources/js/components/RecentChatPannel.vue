@@ -1,6 +1,6 @@
 <template>
     <div>
-        <room v-for="room in rooms" v-bind:name="room.name"></room>
+        <room v-for="room in rooms" v-bind:room="room"></room>
     </div>
 </template>
 

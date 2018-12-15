@@ -29,7 +29,7 @@ Route::get('/getrooms', function(){
         $rooms_datas_response=[];
         foreach ($rooms as $room){
 
-            $rooms_datas_response[] = ['id'=>$room->id, 'name'=>$room->name];
+            $rooms_datas_response[] = ['id'=>$room->id, 'name'=>$room->name, 'messages' => []];
         }
 
         return response(json_encode($rooms_datas_response, JSON_UNESCAPED_UNICODE));
@@ -38,7 +38,8 @@ Route::get('/getrooms', function(){
 });
 
 Route::post('/send',function(\Illuminate\Http\Request $request){
-     event(new \App\Event\Chat($request->input('message'), Auth::user()));
+    $data = $request->all();
+     event(new \App\Event\Chat($data['room_id'], $data['message'], Auth::user()));
      return response()->json(['message'=>$request->input('message')]);
 });
 
