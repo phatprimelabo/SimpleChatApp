@@ -1,9 +1,9 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 require('./bootstrap');
 
@@ -12,6 +12,8 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VueChatScroll from 'vue-chat-scroll';
 Vue.use(VueChatScroll);
+import {store} from './store/store'
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,6 +28,10 @@ Vue.use(VueChatScroll);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('message', require('./components/Message.vue'));
 Vue.component('room', require('./components/Room.vue'));
+Vue.component('recentchatpannel', require('./components/RecentChatPannel.vue'));
+Vue.component('messagepannel', require('./components/MessagePannel.vue'));
+Vue.component('app', require('./components/App.vue'));
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,6 +40,7 @@ Vue.component('room', require('./components/Room.vue'));
 
 const app = new Vue({
     el: '#app',
+    store,
     data: {
         inuser: '',
         outuser: '',
@@ -67,10 +74,7 @@ const app = new Vue({
     mounted(){
         Echo.private('Chat-Room')
             .listen('Chat', (data) => {
-                this.chat.messages.push({
-                    user: data.user,
-                    message: data.message
-                })
+                this.$store.commit('add_message',data);
             });
     }
 });

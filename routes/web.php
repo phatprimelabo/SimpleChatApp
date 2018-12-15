@@ -20,7 +20,7 @@ Route::get('/chat', function(){
 });
 
 Route::get('/getname', function(){
-    return response()->json(['name'=>Auth::user()->name]);
+    return response(json_encode(['name'=>Auth::user()->name],JSON_UNESCAPED_UNICODE));
 });
 
 Route::get('/getrooms', function(){
