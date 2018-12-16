@@ -9,11 +9,15 @@ export const store = new Vuex.Store({
         messages: [], //{room_id: , user: , message}
         curr_room_stt: false,
         curr_room: null,
-        rooms: [],  //{(DB)id: ,DBname , messages:{user: , message: }}
+        rooms_render: true,
+        rooms_string:'',
+        rooms: [],  //{(DB)id: ,idx, DBname , messages:{user: , message: }}
     },
     getters:{
         rooms: state => {
-           return state.rooms;
+            let seft = state.rooms;
+            seft.forEach((room,index)=>{ seft[index].idx = index });
+            return seft;
         },
         inuser: state => {
             return state.inuser;
@@ -29,6 +33,14 @@ export const store = new Vuex.Store({
         },
         rooms_id_list: state => {
             return state.rooms.map(room => room.id);
+        },
+        rooms_string: state => {
+            let seft = state.rooms;
+            state.rooms.forEach((room,index)=>{ seft[index].idx = index });
+            return state.rooms.map(room => room.name+room.idx).join();
+        },
+        rooms_render: state => {
+            return state.rooms_render;
         }
     },
     mutations:{
@@ -36,7 +48,6 @@ export const store = new Vuex.Store({
         init_getname: state => {
             axios.get('/getname').then((response)=>{
                 state.inuser = response.data.name;
-                console.log(state.inuser);
             });
         },
         init_getrooms: state => {
@@ -50,6 +61,9 @@ export const store = new Vuex.Store({
         set_crr_room: (state, id) => {
             state.curr_room_stt = true;
             state.curr_room = id;
+            axios.post('/set_curr_chat_room/'+id).then(()=>{
+                state.rooms.find(room => room.id==id).is_read=1;
+            });
         },
 
 
@@ -59,18 +73,25 @@ export const store = new Vuex.Store({
         },
         add_message: (state, payload) => {
             state.messages.push(payload);               //Asynchronus problem here
-            state.rooms.find(room=>room.id == payload.room_id).messages.push(payload);
+            let room_index = state.rooms.findIndex(room=>room.id == payload.room_id);
+            let room = state.rooms[room_index];
+            room.messages.push(payload);
+            if(payload.user != state.inuser){
+                room.is_read = 0;
+            }
+
+            // THIS FOR STATE-STORE REACTIVITY
+            let rooms = [...state.rooms];
+            let temp_room = rooms[room_index];
+            rooms[room_index] = rooms[0]; // WANING 0
+            rooms[room_index].idx = room_index;
+            rooms[0] = temp_room;
+            rooms[0].idx=0;
+            state.rooms = [...rooms];
         },
 
         //listern message
         init_listen_message: state => {
-            state.rooms.forEach(room=>{
-                console.log(room)
-                Echo.private(`Chat-Room.RoomID-`+room.id)
-                    .listen('Chat', (data) => {
-                        commit('add_message',data);
-                    });
-            })
         }
     },
     actions:{

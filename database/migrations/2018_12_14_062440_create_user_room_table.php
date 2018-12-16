@@ -29,6 +29,6 @@ class CreateUserRoomTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-room');
+        Schema::dropIfExists('user_room');
     }
 }

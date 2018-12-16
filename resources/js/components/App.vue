@@ -19,20 +19,6 @@
         },
         mounted(){
             this.initChatApp();
-            Echo.private('Chat-Room.RoomID-').listen('Chat', data=>{
-                this.$store.commit('add_message',data);
-            });
-            Echo.private('Chat-Room.RoomID-').listen('Chat', data=>{
-                this.$store.commit('add_message',data);
-            });
-        },
-        watch:{
-            rooms_id_list: rooms_id_list=>{
-                for(let i=0; i<rooms_id_list.length;i++){
-                    let room_id = rooms_id_list[i];
-                    console.log(room_id);
-                }
-            }
         },
         methods:{
             ...mapActions(['init_getname','init_getrooms','init_listen_message']),

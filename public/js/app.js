@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(11);
-var isBuffer = __webpack_require__(26);
+var isBuffer = __webpack_require__(27);
 
 /*global toString:true*/
 
@@ -1556,7 +1556,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(56)
+var listToStyles = __webpack_require__(57)
 
 /*
 type StyleObject = {
@@ -1772,7 +1772,7 @@ function applyToTag (styleElement, obj) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(28);
+var normalizeHeaderName = __webpack_require__(29);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -12960,13 +12960,13 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(44).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(45).setImmediate))
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -26137,12 +26137,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(29);
-var buildURL = __webpack_require__(31);
-var parseHeaders = __webpack_require__(32);
-var isURLSameOrigin = __webpack_require__(33);
+var settle = __webpack_require__(30);
+var buildURL = __webpack_require__(32);
+var parseHeaders = __webpack_require__(33);
+var isURLSameOrigin = __webpack_require__(34);
 var createError = __webpack_require__(14);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(34);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(35);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -26239,7 +26239,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(35);
+      var cookies = __webpack_require__(36);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -26323,7 +26323,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(30);
+var enhanceError = __webpack_require__(31);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -35229,34 +35229,337 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(19);
-module.exports = __webpack_require__(79);
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
 
+/***/ "./src/array/filterBy.js":
+/*!*******************************!*\
+  !*** ./src/array/filterBy.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/index */ \"./src/util/index.js\");\n\n\n/**\n * Filter filter for arrays\n *\n * @param {Array} arr\n * @param {String} prop\n * @param {String|Number} search\n */\n\nfunction filterBy (arr, search) {\n  var arr = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].convertArray(arr)\n  if (search == null) {\n    return arr\n  }\n  if (typeof search === 'function') {\n    return arr.filter(search)\n  }\n  // cast to lowercase string\n  search = ('' + search).toLowerCase()\n  var n = 2\n  // extract and flatten keys\n  var keys = Array.prototype.concat.apply([], _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].toArray(arguments, n))\n  var res = []\n  var item, key, val, j\n  for (var i = 0, l = arr.length; i < l; i++) {\n    item = arr[i]\n    val = (item && item.$value) || item\n    j = keys.length\n    if (j) {\n      while (j--) {\n        key = keys[j]\n        if ((key === '$key' && contains(item.$key, search)) ||\n            contains(_util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getPath(val, key), search)) {\n          res.push(item)\n          break\n        }\n      }\n    } else if (contains(item, search)) {\n      res.push(item)\n    }\n  }\n  return res\n}\n\nfunction contains (val, search) {\n  var i\n  if (_util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isPlainObject(val)) {\n    var keys = Object.keys(val)\n    i = keys.length\n    while (i--) {\n      if (contains(val[keys[i]], search)) {\n        return true\n      }\n    }\n  } else if (_util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isArray(val)) {\n    i = val.length\n    while (i--) {\n      if (contains(val[i], search)) {\n        return true\n      }\n    }\n  } else if (val != null) {\n    return val.toString().toLowerCase().indexOf(search) > -1\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (filterBy);\n\n//# sourceURL=webpack:///./src/array/filterBy.js?");
+
+/***/ }),
+
+/***/ "./src/array/find.js":
+/*!***************************!*\
+  !*** ./src/array/find.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _filterBy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./filterBy */ \"./src/array/filterBy.js\");\n\n\n/**\n * Get first matching element from a filtered array\n *\n * @param {Array} arr\n * @param {String|Number} search\n * @returns {mixed}\n */\nfunction find(arr, search) \n{\n  var array = _filterBy__WEBPACK_IMPORTED_MODULE_0__[\"default\"].apply(this, arguments);\n  array.splice(1);\n  return array;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (find);\n\n\n//# sourceURL=webpack:///./src/array/find.js?");
+
+/***/ }),
+
+/***/ "./src/array/index.js":
+/*!****************************!*\
+  !*** ./src/array/index.js ***!
+  \****************************/
+/*! exports provided: limitBy, filterBy, orderBy, find */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _limitBy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./limitBy */ \"./src/array/limitBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"limitBy\", function() { return _limitBy__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _filterBy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filterBy */ \"./src/array/filterBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"filterBy\", function() { return _filterBy__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _orderBy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./orderBy */ \"./src/array/orderBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"orderBy\", function() { return _orderBy__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _find__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./find */ \"./src/array/find.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"find\", function() { return _find__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/array/index.js?");
+
+/***/ }),
+
+/***/ "./src/array/limitBy.js":
+/*!******************************!*\
+  !*** ./src/array/limitBy.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/index */ \"./src/util/index.js\");\n\n\n/**\n * Limit filter for arrays\n *\n * @param {Number} n\n * @param {Number} offset (Decimal expected)\n */\n\nfunction limitBy (arr, n, offset) {\n  offset = offset ? parseInt(offset, 10) : 0\n  n = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].toNumber(n)\n  return typeof n === 'number'\n    ? arr.slice(offset, offset + n)\n    : arr\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (limitBy);\n\n//# sourceURL=webpack:///./src/array/limitBy.js?");
+
+/***/ }),
+
+/***/ "./src/array/orderBy.js":
+/*!******************************!*\
+  !*** ./src/array/orderBy.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/index */ \"./src/util/index.js\");\n\n\n/**\n * Filter filter for arrays\n *\n * @param {String|Array<String>|Function} ...sortKeys\n * @param {Number} [order]\n */\n\nfunction orderBy (arr) {\n  var comparator = null\n  var sortKeys\n  arr = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].convertArray(arr)\n\n  // determine order (last argument)\n  var args = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].toArray(arguments, 1)\n  var order = args[args.length - 1]\n  if (typeof order === 'number') {\n    order = order < 0 ? -1 : 1\n    args = args.length > 1 ? args.slice(0, -1) : args\n  } else {\n    order = 1\n  }\n\n  // determine sortKeys & comparator\n  var firstArg = args[0]\n  if (!firstArg) {\n    return arr\n  } else if (typeof firstArg === 'function') {\n    // custom comparator\n    comparator = function (a, b) {\n      return firstArg(a, b) * order\n    }\n  } else {\n    // string keys. flatten first\n    sortKeys = Array.prototype.concat.apply([], args)\n    comparator = function (a, b, i) {\n      i = i || 0\n      return i >= sortKeys.length - 1\n        ? baseCompare(a, b, i)\n        : baseCompare(a, b, i) || comparator(a, b, i + 1)\n    }\n  }\n\n  function baseCompare (a, b, sortKeyIndex) {\n    var sortKey = sortKeys[sortKeyIndex]\n    if (sortKey) {\n      if (sortKey !== '$key') {\n        if (_util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isObject(a) && '$value' in a) a = a.$value\n        if (_util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isObject(b) && '$value' in b) b = b.$value\n      }\n      a = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isObject(a) ? _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getPath(a, sortKey) : a\n      b = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].isObject(b) ? _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getPath(b, sortKey) : b\n    }\n    return a === b ? 0 : a > b ? order : -order\n  }\n\n  // sort on a copy to avoid mutating original array\n  return arr.slice().sort(comparator)\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (orderBy);\n\n//# sourceURL=webpack:///./src/array/orderBy.js?");
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util/index */ \"./src/util/index.js\");\n/* harmony import */ var _string_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string/index */ \"./src/string/index.js\");\n/* harmony import */ var _array_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./array/index */ \"./src/array/index.js\");\n/* harmony import */ var _other_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./other/index */ \"./src/other/index.js\");\n\n\n\n\n\nvar Vue2Filters = {\n  install: function(Vue) {\n    _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].each(_string_index__WEBPACK_IMPORTED_MODULE_1__, function(value, key) {\n        Vue.filter(key, value)\n    })\n\n    _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].each(_other_index__WEBPACK_IMPORTED_MODULE_3__, function(value, key) {\n        Vue.filter(key, value)\n    })\n  },\n  mixin: {\n    methods: {\n        limitBy: _array_index__WEBPACK_IMPORTED_MODULE_2__[\"limitBy\"],\n        filterBy: _array_index__WEBPACK_IMPORTED_MODULE_2__[\"filterBy\"],\n        orderBy: _array_index__WEBPACK_IMPORTED_MODULE_2__[\"orderBy\"],\n        find: _array_index__WEBPACK_IMPORTED_MODULE_2__[\"find\"]\n    }\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Vue2Filters);\n\nif (typeof window !== 'undefined' && window.Vue) {\n  window.Vue.use(Vue2Filters);\n  window.Vue2Filters = Vue2Filters;\n}\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/other/currency.js":
+/*!*******************************!*\
+  !*** ./src/other/currency.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * \n * 12345 => $12,345.00\n *\n * @param {String} symbol\n * @param {Number} decimals Decimal places\n * @param {Object} options\n */\n\nfunction currency (value, symbol, decimals, options) {\n  var thousandsSeparator, symbolOnLeft, spaceBetweenAmountAndSymbol\n  var digitsRE = /(\\d{3})(?=\\d)/g\n  options = options || {}\n  value = parseFloat(value)\n  if (!isFinite(value) || (!value && value !== 0)) return ''\n  symbol = symbol != null ? symbol : '$'\n  decimals = decimals != null ? decimals : 2\n  thousandsSeparator = options.thousandsSeparator != null ? options.thousandsSeparator : ','\n  symbolOnLeft = options.symbolOnLeft != null ? options.symbolOnLeft : true\n  spaceBetweenAmountAndSymbol = options.spaceBetweenAmountAndSymbol != null ? options.spaceBetweenAmountAndSymbol : false\n  var stringified = Math.abs(value).toFixed(decimals)\n  stringified = options.decimalSeparator\n    ? stringified.replace('.', options.decimalSeparator)\n    : stringified\n  var _int = decimals\n    ? stringified.slice(0, -1 - decimals)\n    : stringified\n  var i = _int.length % 3\n  var head = i > 0\n    ? (_int.slice(0, i) + (_int.length > 3 ? thousandsSeparator : ''))\n    : ''\n  var _float = decimals\n    ? stringified.slice(-1 - decimals)\n    : ''\n  symbol = spaceBetweenAmountAndSymbol\n    ? (symbolOnLeft ? symbol + ' ' : ' ' + symbol)\n    : symbol\n  symbol = symbolOnLeft\n    ? symbol + head +\n      _int.slice(i).replace(digitsRE, '$1' + thousandsSeparator) + _float\n    : head +\n      _int.slice(i).replace(digitsRE, '$1' + thousandsSeparator) + _float + symbol\n  var sign = value < 0 ? '-' : ''\n  return sign + symbol\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (currency);\n\n//# sourceURL=webpack:///./src/other/currency.js?");
+
+/***/ }),
+
+/***/ "./src/other/index.js":
+/*!****************************!*\
+  !*** ./src/other/index.js ***!
+  \****************************/
+/*! exports provided: currency, pluralize */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _currency__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./currency */ \"./src/other/currency.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"currency\", function() { return _currency__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _pluralize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pluralize */ \"./src/other/pluralize.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"pluralize\", function() { return _pluralize__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/other/index.js?");
+
+/***/ }),
+
+/***/ "./src/other/pluralize.js":
+/*!********************************!*\
+  !*** ./src/other/pluralize.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _util_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/index */ \"./src/util/index.js\");\n\n\n/**\n * 'item' => 'items'\n *\n * @params\n *  an array of strings corresponding to\n *  the single, double, triple ... forms of the word to\n *  be pluralized. When the number to be pluralized\n *  exceeds the length of the args, it will use the last\n *  entry in the array.\n *\n *  e.g. ['single', 'double', 'triple', 'multiple']\n */\n\nfunction pluralize (value) {\n  var args = _util_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].toArray(arguments, 1)\n  return args.length > 1\n    ? (args[value % 10 - 1] || args[args.length - 1])\n    : (args[0] + (value === 1 ? '' : 's'))\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (pluralize);\n\n//# sourceURL=webpack:///./src/other/pluralize.js?");
+
+/***/ }),
+
+/***/ "./src/string/capitalize.js":
+/*!**********************************!*\
+  !*** ./src/string/capitalize.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n *  Converts a string into Capitalize\n * \n * 'abc' => 'Abc'\n */\n\nfunction capitalize (value) {\n  if (!value && value !== 0) return ''\n  value = value.toString()\n  return value.charAt(0).toUpperCase() + value.slice(1)\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (capitalize);\n\n\n//# sourceURL=webpack:///./src/string/capitalize.js?");
+
+/***/ }),
+
+/***/ "./src/string/index.js":
+/*!*****************************!*\
+  !*** ./src/string/index.js ***!
+  \*****************************/
+/*! exports provided: capitalize, uppercase, lowercase, placeholder, truncate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _capitalize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./capitalize */ \"./src/string/capitalize.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"capitalize\", function() { return _capitalize__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _uppercase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./uppercase */ \"./src/string/uppercase.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"uppercase\", function() { return _uppercase__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _lowercase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lowercase */ \"./src/string/lowercase.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"lowercase\", function() { return _lowercase__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _placeholder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./placeholder */ \"./src/string/placeholder.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"placeholder\", function() { return _placeholder__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n/* harmony import */ var _truncate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./truncate */ \"./src/string/truncate.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"truncate\", function() { return _truncate__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/string/index.js?");
+
+/***/ }),
+
+/***/ "./src/string/lowercase.js":
+/*!*********************************!*\
+  !*** ./src/string/lowercase.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Converts a string to lowercase\n * \n * 'AbC' => 'abc'\n */\n\nfunction lowercase (value) {\n  return (value || value === 0)\n    ? value.toString().toLowerCase()\n    : ''\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (lowercase);\n\n//# sourceURL=webpack:///./src/string/lowercase.js?");
+
+/***/ }),
+
+/***/ "./src/string/placeholder.js":
+/*!***********************************!*\
+  !*** ./src/string/placeholder.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n *  If the value is missing outputs the placeholder text\n * \n * '' => {placeholder}\n * 'foo' => 'foo'\n */\n\nfunction placeholder (input, property) {\n  return ( input === undefined || input === '' || input === null ) ? property : input;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (placeholder);\n\n\n//# sourceURL=webpack:///./src/string/placeholder.js?");
+
+/***/ }),
+
+/***/ "./src/string/truncate.js":
+/*!********************************!*\
+  !*** ./src/string/truncate.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n *  Truncate at the given || default length\n *\n * 'lorem ipsum dolor' => 'lorem ipsum dol...'\n */\n\nfunction truncate (value, length) {\n  length = length || 15\n  if( !value || typeof value !== 'string' ) return ''\n  if( value.length <= length) return value\n  return value.substring(0, length) + '...'\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (truncate);\n\n\n//# sourceURL=webpack:///./src/string/truncate.js?");
+
+/***/ }),
+
+/***/ "./src/string/uppercase.js":
+/*!*********************************!*\
+  !*** ./src/string/uppercase.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Converts a string to UPPERCASE\n * \n * 'abc' => 'ABC'\n */\n\nfunction uppercase (value) {\n  return (value || value === 0)\n    ? value.toString().toUpperCase()\n    : ''\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (uppercase);\n\n//# sourceURL=webpack:///./src/string/uppercase.js?");
+
+/***/ }),
+
+/***/ "./src/util/index.js":
+/*!***************************!*\
+  !*** ./src/util/index.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar\n    ArrayProto = Array.prototype,\n    ObjProto = Object.prototype;\n\nvar\n    slice = ArrayProto.slice,\n    toString = ObjProto.toString;\n\nvar util = {};\n\nutil.isArray = function(obj) {\n    return Array.isArray(obj);\n};\n\nvar MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;\nutil.isArrayLike = function(obj) {\n    if(typeof obj !== 'object' || !obj){\n        return false;\n    }\n    var length = obj.length;\n    return typeof length === 'number'\n        && length % 1 === 0 && length >= 0 && length <= MAX_ARRAY_INDEX;\n};\n\nutil.isObject = function(obj) {\n    var type = typeof obj;\n    return type === 'function' || type === 'object' && !!obj;\n};\n\n\nutil.each = function(obj, callback) {\n    var i,\n        len;\n    if (util.isArray(obj)) {\n        for (i = 0, len = obj.length; i < len; i++) {\n            if (callback(obj[i], i, obj) === false) {\n                break;\n            }\n        }\n    } else {\n        for (i in obj) {\n            if (callback(obj[i], i, obj) === false) {\n                break;\n            }\n        }\n    }\n    return obj;\n};\n\nutil.each(['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error'], function(name) {\n    util['is' + name] = function(obj) {\n        return toString.call(obj) === '[object ' + name + ']';\n    };\n});\n\nutil.toArray = function(list, start) {\n  start = start || 0\n  var i = list.length - start\n  var ret = new Array(i)\n  while (i--) {\n    ret[i] = list[i + start]\n  }\n  return ret\n}\n\nutil.toNumber = function(value) {\n  if (typeof value !== 'string') {\n    return value\n  } else {\n    var parsed = Number(value)\n    return isNaN(parsed)\n      ? value\n      : parsed\n  }\n};\n\nutil.convertArray = function (value) {\n    if (util.isArray(value)) {\n      return value\n    } else if (util.isPlainObject(value)) {\n      // convert plain object to array.\n      var keys = Object.keys(value)\n      var i = keys.length\n      var res = new Array(i)\n      var key\n      while (i--) {\n        key = keys[i]\n        res[i] = {\n          $key: key,\n          $value: value[key]\n        }\n      }\n      return res\n    } else {\n      return value || []\n    }\n}\n\nfunction multiIndex(obj,is) {  // obj,['1','2','3'] -> ((obj['1'])['2'])['3']\n    return is.length ? multiIndex(obj[is[0]],is.slice(1)) : obj\n}\n\nutil.getPath = function(obj,is) {   // obj,'1.2.3' -> multiIndex(obj,['1','2','3'])\n    return multiIndex(obj,is.split('.'))\n}\n\n/**\n * Strict object type check. Only returns true\n * for plain JavaScript objects.\n *\n * @param {*} obj\n * @return {Boolean}\n */\n\nvar toString = Object.prototype.toString\nvar OBJECT_STRING = '[object Object]'\nutil.isPlainObject = function (obj) {\n  return toString.call(obj) === OBJECT_STRING\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (util);\n\n//# sourceURL=webpack:///./src/util/index.js?");
+
+/***/ })
+
+/******/ });
+});
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(20);
+module.exports = __webpack_require__(80);
+
+
+/***/ }),
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_chat_scroll__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_chat_scroll__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_chat_scroll__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_store__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_filters__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue2_filters__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store__ = __webpack_require__(48);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(20);
+__webpack_require__(21);
 
 window.Vue = __webpack_require__(7);
 
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_chat_scroll___default.a);
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue2_filters___default.a);
+
 
 
 /**
@@ -35270,12 +35573,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(50));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', __webpack_require__(53));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('room', __webpack_require__(59));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recentchatpannel', __webpack_require__(64));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messagepannel', __webpack_require__(69));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app', __webpack_require__(74));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(51));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', __webpack_require__(54));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('room', __webpack_require__(60));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recentchatpannel', __webpack_require__(65));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messagepannel', __webpack_require__(70));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app', __webpack_require__(75));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35284,20 +35587,21 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app', __webpack_require__
  */
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app',
-  store: __WEBPACK_IMPORTED_MODULE_2__store_store__["a" /* store */]
+  store: __WEBPACK_IMPORTED_MODULE_3__store_store__["a" /* store */]
 });
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pusher_js__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pusher_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pusher_js__);
+var _this = this;
 
-window._ = __webpack_require__(21);
+window._ = __webpack_require__(22);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -35309,7 +35613,7 @@ try {
     window.Popper = __webpack_require__(9).default;
     window.$ = window.jQuery = __webpack_require__(10);
 
-    __webpack_require__(23);
+    __webpack_require__(24);
 } catch (e) {}
 
 /**
@@ -35318,7 +35622,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(24);
+window.axios = __webpack_require__(25);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -35356,8 +35660,14 @@ window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */](
 
 
 
+Array.prototype.swap = function (indexA, indexB) {
+    var temp = _this[indexA];
+    _this[indexA] = _this[indexB];
+    _this[indexB] = temp;
+};
+
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -52469,10 +52779,10 @@ window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */](
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(23)(module)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -52500,7 +52810,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -56450,13 +56760,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(25);
+module.exports = __webpack_require__(26);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56464,7 +56774,7 @@ module.exports = __webpack_require__(25);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(11);
-var Axios = __webpack_require__(27);
+var Axios = __webpack_require__(28);
 var defaults = __webpack_require__(6);
 
 /**
@@ -56499,14 +56809,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(16);
-axios.CancelToken = __webpack_require__(41);
+axios.CancelToken = __webpack_require__(42);
 axios.isCancel = __webpack_require__(15);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(42);
+axios.spread = __webpack_require__(43);
 
 module.exports = axios;
 
@@ -56515,7 +56825,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /*!
@@ -56542,7 +56852,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56550,8 +56860,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(6);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(36);
-var dispatchRequest = __webpack_require__(37);
+var InterceptorManager = __webpack_require__(37);
+var dispatchRequest = __webpack_require__(38);
 
 /**
  * Create a new instance of Axios
@@ -56628,7 +56938,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56647,7 +56957,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56680,7 +56990,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56708,7 +57018,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56781,7 +57091,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56841,7 +57151,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56916,7 +57226,7 @@ module.exports = (
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56959,7 +57269,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57019,7 +57329,7 @@ module.exports = (
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57078,18 +57388,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(38);
+var transformData = __webpack_require__(39);
 var isCancel = __webpack_require__(15);
 var defaults = __webpack_require__(6);
-var isAbsoluteURL = __webpack_require__(39);
-var combineURLs = __webpack_require__(40);
+var isAbsoluteURL = __webpack_require__(40);
+var combineURLs = __webpack_require__(41);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -57171,7 +57481,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57198,7 +57508,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57219,7 +57529,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57240,7 +57550,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57304,7 +57614,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57338,7 +57648,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58583,7 +58893,7 @@ var Echo = function () {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -58639,7 +58949,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(45);
+__webpack_require__(46);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -58653,7 +58963,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -58846,7 +59156,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(12)))
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -58914,7 +59224,7 @@ return VueChatScroll;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58930,6 +59240,8 @@ var _this = this;
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 
 
 
@@ -58941,11 +59253,17 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
         messages: [], //{room_id: , user: , message}
         curr_room_stt: false,
         curr_room: null,
-        rooms: [] //{(DB)id: ,DBname , messages:{user: , message: }}
+        rooms_render: true,
+        rooms_string: '',
+        rooms: [] //{(DB)id: ,idx, DBname , messages:{user: , message: }}
     },
     getters: {
         rooms: function rooms(state) {
-            return state.rooms;
+            var seft = state.rooms;
+            seft.forEach(function (room, index) {
+                seft[index].idx = index;
+            });
+            return seft;
         },
         inuser: function inuser(state) {
             return state.inuser;
@@ -58965,6 +59283,18 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
             return state.rooms.map(function (room) {
                 return room.id;
             });
+        },
+        rooms_string: function rooms_string(state) {
+            var seft = state.rooms;
+            state.rooms.forEach(function (room, index) {
+                seft[index].idx = index;
+            });
+            return state.rooms.map(function (room) {
+                return room.name + room.idx;
+            }).join();
+        },
+        rooms_render: function rooms_render(state) {
+            return state.rooms_render;
         }
     },
     mutations: {
@@ -58972,7 +59302,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
         init_getname: function init_getname(state) {
             axios.get('/getname').then(function (response) {
                 state.inuser = response.data.name;
-                console.log(state.inuser);
             });
         },
         init_getrooms: function init_getrooms(state) {
@@ -58985,6 +59314,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
         set_crr_room: function set_crr_room(state, id) {
             state.curr_room_stt = true;
             state.curr_room = id;
+            axios.post('/set_curr_chat_room/' + id).then(function () {
+                state.rooms.find(function (room) {
+                    return room.id == id;
+                }).is_read = 1;
+            });
         },
 
         //CHAT TASK
@@ -58994,20 +59328,27 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
         },
         add_message: function add_message(state, payload) {
             state.messages.push(payload); //Asynchronus problem here
-            state.rooms.find(function (room) {
+            var room_index = state.rooms.findIndex(function (room) {
                 return room.id == payload.room_id;
-            }).messages.push(payload);
+            });
+            var room = state.rooms[room_index];
+            room.messages.push(payload);
+            if (payload.user != state.inuser) {
+                room.is_read = 0;
+            }
+
+            // THIS FOR STATE-STORE REACTIVITY
+            var rooms = [].concat(_toConsumableArray(state.rooms));
+            var temp_room = rooms[room_index];
+            rooms[room_index] = rooms[0]; // WANING 0
+            rooms[room_index].idx = room_index;
+            rooms[0] = temp_room;
+            rooms[0].idx = 0;
+            state.rooms = [].concat(_toConsumableArray(rooms));
         },
 
         //listern message
-        init_listen_message: function init_listen_message(state) {
-            state.rooms.forEach(function (room) {
-                console.log(room);
-                Echo.private('Chat-Room.RoomID-' + room.id).listen('Chat', function (data) {
-                    commit('add_message', data);
-                });
-            });
-        }
+        init_listen_message: function init_listen_message(state) {}
     },
     actions: {
         init_getname: function init_getname(_ref) {
@@ -59021,8 +59362,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
             commit('init_getrooms');
         },
         init_listenChatApp: function () {
-            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref3) {
-                var commit = _ref3.commit;
+            var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref4) {
+                var commit = _ref4.commit;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -59045,17 +59386,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
                 }, _callee, _this);
             }));
 
-            function init_listenChatApp(_x) {
-                return _ref4.apply(this, arguments);
-            }
-
-            return init_listenChatApp;
+            return function init_listenChatApp(_x) {
+                return _ref3.apply(this, arguments);
+            };
         }()
     }
 });
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -59080,7 +59419,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(49);
+module.exports = __webpack_require__(50);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -59096,7 +59435,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -59829,15 +60168,15 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59876,7 +60215,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59905,7 +60244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59948,19 +60287,19 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(54)
+  __webpack_require__(55)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(57)
+var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59999,13 +60338,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(55);
+var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60025,7 +60364,7 @@ if(false) {
 }
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60039,7 +60378,7 @@ exports.push([module.i, "\n.container[data-v-b91a6428]{\n    padding-right: 2rem
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 /**
@@ -60072,7 +60411,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60089,14 +60428,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['is_income', 'is_sameuser', 'user', 'content'],
+    props: ['msg_data'],
+    data: function data() {
+        return { message_data: {} };
+    },
     mounted: function mounted() {
-        console.log('Component Mounted');
+        this.message_data = _.clone(this.msg_data);
     }
 });
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60107,33 +60449,33 @@ var render = function() {
     "div",
     {
       staticClass: "container",
-      class: _vm.is_income ? "text-right" : "text-left"
+      class: _vm.message_data.is_income ? "text-right" : "text-left"
     },
     [
       _c("a", { attrs: { href: "#" } }, [
-        !_vm.is_sameuser && !_vm.is_income
+        !_vm.message_data.is_sameuser && !_vm.message_data.is_income
           ? _c("i", { staticClass: "d-inline-block fas fa-user-circle fa-lg" })
           : _vm._e()
       ]),
       _vm._v(" "),
-      !_vm.is_sameuser
+      !_vm.message_data.is_sameuser
         ? _c(
             "p",
             { staticClass: "d-inline-block chat-title mb-2 text-muted" },
-            [_vm._v(_vm._s(_vm.user))]
+            [_vm._v(_vm._s(_vm.message_data.user))]
           )
         : _vm._e(),
       _vm._v(" "),
       _c("a", { attrs: { href: "#" } }, [
-        !_vm.is_sameuser && _vm.is_income
+        !_vm.message_data.is_sameuser && _vm.message_data.is_income
           ? _c("i", { staticClass: "d-inline-block fas fa-user-circle fa-lg" })
           : _vm._e()
       ]),
       _vm._v(" "),
-      !_vm.is_sameuser ? _c("br") : _vm._e(),
+      !_vm.message_data.is_sameuser ? _c("br") : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "row d-inline-block chat-content" }, [
-        _vm._v(_vm._s(_vm.content))
+        _vm._v(_vm._s(_vm.message_data.content))
       ])
     ]
   )
@@ -60149,19 +60491,19 @@ if (false) {
 }
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(60)
+  __webpack_require__(61)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(62)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(63)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60200,13 +60542,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60226,7 +60568,7 @@ if(false) {
 }
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60240,7 +60582,7 @@ exports.push([module.i, "\n.cpn-container[data-v-cd69db74]{\n    padding: 15px;\
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60259,9 +60601,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     props: ['room'],
-    mounted: function mounted() {
-        console.log('Component Mounted');
-    },
+    mounted: function mounted() {},
 
     methods: {
         chat_this_room: function chat_this_room() {
@@ -60278,7 +60618,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 }));
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60288,7 +60628,8 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass: "cpn-container text-left btn btn-block btn-outline-info",
+      staticClass: "cpn-container text-left btn btn-block",
+      class: _vm.room.is_read ? "btn-outline-info" : "btn-outline-warning",
       on: { click: _vm.chat_this_room }
     },
     [
@@ -60329,19 +60670,19 @@ if (false) {
 }
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(65)
+  __webpack_require__(66)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(67)
+var __vue_script__ = __webpack_require__(68)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(69)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60380,13 +60721,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60406,7 +60747,7 @@ if(false) {
 }
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60414,18 +60755,20 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_filters__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_filters__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -60436,12 +60779,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['rooms']))
+    mixins: [__WEBPACK_IMPORTED_MODULE_0_vue2_filters___default.a.mixin],
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['rooms', 'rooms_string', 'rooms_render'])),
+    watch: {}
 });
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60450,8 +60796,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.rooms, function(room) {
-      return _c("room", { attrs: { room: room } })
+    _vm._l(_vm.orderBy(_vm.rooms, "idx"), function(room) {
+      return _c("room", { key: room.idx, attrs: { room: room } })
     }),
     1
   )
@@ -60467,19 +60813,19 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(70)
+  __webpack_require__(71)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60518,13 +60864,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(71);
+var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60544,7 +60890,7 @@ if(false) {
 }
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60558,7 +60904,7 @@ exports.push([module.i, "\n.chat-pannel[data-v-31ccf238]{\n    overflow-y: scrol
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60587,6 +60933,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -60598,40 +60946,34 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser', 'curr_room', 'curr_room_stt'])),
     methods: {
-        send: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        send: function send() {
+            var _this = this;
+
+            return _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return this.$store.commit('send_message', { room_id: this.curr_room.id, message: this.message });
+                                return _this.$store.commit('send_message', { room_id: _this.curr_room.id, message: _this.message });
 
                             case 2:
-                                this.message = '';
+                                _this.message = '';
 
                             case 3:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this);
-            }));
-
-            function send() {
-                return _ref.apply(this, arguments);
-            }
-
-            return send;
-        }()
+                }, _callee, _this);
+            }))();
+        }
     },
-    mounted: function mounted() {
-        var sefl = this;
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60652,14 +60994,17 @@ var render = function() {
           },
           _vm._l(_vm.curr_room.messages, function(item, index) {
             return _c("message", {
+              key: index,
               attrs: {
-                is_income: item.user == _vm.inuser,
-                is_sameuser:
-                  index > 0
-                    ? _vm.curr_room.messages[index - 1].user == item.user
-                    : false,
-                user: item.user,
-                content: item.message
+                msg_data: {
+                  is_income: item.user == _vm.inuser,
+                  is_sameuser:
+                    index > 0
+                      ? _vm.curr_room.messages[index - 1].user == item.user
+                      : false,
+                  user: item.user,
+                  content: item.message
+                }
               }
             })
           }),
@@ -60711,19 +61056,19 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(75)
+  __webpack_require__(76)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(77)
+var __vue_script__ = __webpack_require__(78)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(79)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60762,13 +61107,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(76);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60788,7 +61133,7 @@ if(false) {
 }
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -60796,13 +61141,13 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60834,58 +61179,38 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['rooms_id_list'])),
     mounted: function mounted() {
-        var _this = this;
-
         this.initChatApp();
-        Echo.private('Chat-Room.RoomID-').listen('Chat', function (data) {
-            _this.$store.commit('add_message', data);
-        });
-        Echo.private('Chat-Room.RoomID-').listen('Chat', function (data) {
-            _this.$store.commit('add_message', data);
-        });
     },
 
-    watch: {
-        rooms_id_list: function rooms_id_list(_rooms_id_list) {
-            for (var i = 0; i < _rooms_id_list.length; i++) {
-                var room_id = _rooms_id_list[i];
-                console.log(room_id);
-            }
-        }
-    },
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['init_getname', 'init_getrooms', 'init_listen_message']), {
-        initChatApp: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        initChatApp: function initChatApp() {
+            var _this = this;
+
+            return _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return this.init_getname();
+                                return _this.init_getname();
 
                             case 2:
                                 _context.next = 4;
-                                return this.init_getrooms();
+                                return _this.init_getrooms();
 
                             case 4:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this);
-            }));
-
-            function initChatApp() {
-                return _ref.apply(this, arguments);
-            }
-
-            return initChatApp;
-        }()
+                }, _callee, _this);
+            }))();
+        }
     })
 });
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60919,7 +61244,7 @@ if (false) {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

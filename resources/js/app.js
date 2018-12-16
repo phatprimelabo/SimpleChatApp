@@ -12,6 +12,11 @@ window.Vue = require('vue');
 import Vue from 'vue';
 import VueChatScroll from 'vue-chat-scroll';
 Vue.use(VueChatScroll);
+
+import Vue2Filters from 'vue2-filters'
+Vue.use(Vue2Filters);
+
+
 import {store} from './store/store'
 
 /**
@@ -39,5 +44,5 @@ Vue.component('app', require('./components/App.vue'));
  */
 new Vue({
     el: '#app',
-    store
+    store,
 });

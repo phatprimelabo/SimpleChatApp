@@ -1,5 +1,5 @@
 <template>
-    <button class="cpn-container text-left btn btn-block btn-outline-info" v-on:click="chat_this_room">
+    <button class="cpn-container text-left btn btn-block" v-bind:class=" room.is_read? 'btn-outline-info' : 'btn-outline-warning' " v-on:click="chat_this_room">
         <a href="#"><i v-if="!is_sameuser && !is_income" class="d-inline-block fas fa-user-circle fa-lg"></i></a>
         <p class="d-inline-block text-primary chat-title">{{room.name}}</p>
         <br>
@@ -9,9 +9,8 @@
 
 <script>
     export default {
-        props:['room'],
+        props: ['room'],
         mounted(){
-            console.log('Component Mounted');
         },
         methods:{
             chat_this_room(){
