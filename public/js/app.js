@@ -35574,10 +35574,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue2
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('example-component', __webpack_require__(51));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', __webpack_require__(54));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('room', __webpack_require__(60));
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('account-pannel', __webpack_require__(84));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('recentchatpannel', __webpack_require__(65));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('room', __webpack_require__(60));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('messagepannel', __webpack_require__(70));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('message', __webpack_require__(54));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('app', __webpack_require__(75));
 
 /**
@@ -60372,7 +60374,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-b91a6428]{\n    padding-right: 2rem;\n    border: none;\n}\n.container .chat-content[data-v-b91a6428] {\n    margin-bottom: 3px;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    min-width: 16rem;\n    border-radius: 3px;\n    background-color: #DEEDF4;\n}\n.container .chat-title[data-v-b91a6428] {\n    border-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-b91a6428]{\n    border: none;\n}\n.container .chat-content[data-v-b91a6428] {\n    margin-bottom: 3px;\n    padding-top: 5px;\n    padding-bottom: 5px;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    min-width: 16rem;\n    border-radius: 3px;\n    background-color: #F1F1F1;\n}\n.container .chat-title[data-v-b91a6428] {\n    border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -60576,7 +60578,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.cpn-container[data-v-cd69db74]{\n    padding: 15px;\n}\n.chat-content[data-v-cd69db74] {\n    margin-bottom: 4px;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    min-width: 16rem;\n    border-radius: 3px;\n}\n.chat-title[data-v-cd69db74] {\n    margin-bottom: 4px;\n    padding-left: 6px;\n    border-radius: 3px;\n}\n", ""]);
+exports.push([module.i, "\n.cpn-container[data-v-cd69db74]{\n    margin: 0px;\n    border-radius: 0px;\n    padding: 15px;\n    border-top: none;\n    border-color: #f1f1f1;\n    min-height: 5rem;\n}\n.chat-content[data-v-cd69db74] {\n    margin-bottom: 4px;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    min-width: 16rem;\n    border-radius: 3px;\n}\n.chat-title[data-v-cd69db74] {\n    margin-bottom: 4px;\n    padding-left: 6px;\n    border-radius: 3px;\n}\n", ""]);
 
 // exports
 
@@ -60587,35 +60589,37 @@ exports.push([module.i, "\n.cpn-container[data-v-cd69db74]{\n    padding: 15px;\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+/* harmony default export */ __webpack_exports__["default"] = ({
     props: ['room'],
-    mounted: function mounted() {},
-
     methods: {
         chat_this_room: function chat_this_room() {
             this.$store.commit('set_crr_room', this.room.id);
         }
-    }
-}, 'mounted', function mounted() {
-    var _this = this;
+    },
+    mounted: function mounted() {
+        var _this = this;
 
-    var room_id = this.room.id;
-    Echo.private('Chat-Room.RoomID-' + room_id).listen('Chat', function (data) {
-        _this.$store.commit('add_message', data);
-    });
-}));
+        var room_id = this.room.id;
+        Echo.private('Chat-Room.RoomID-' + room_id).listen('Chat', function (data) {
+            _this.$store.commit('add_message', data);
+        });
+    }
+});
 
 /***/ }),
 /* 64 */
@@ -60626,10 +60630,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "button",
+    "div",
     {
       staticClass: "cpn-container text-left btn btn-block",
-      class: _vm.room.is_read ? "btn-outline-info" : "btn-outline-warning",
       on: { click: _vm.chat_this_room }
     },
     [
@@ -60639,22 +60642,39 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "d-inline-block text-primary chat-title" }, [
+      _c("p", { staticClass: "d-inline-block text-dark chat-title" }, [
         _vm._v(_vm._s(_vm.room.name))
       ]),
+      _vm._v(" "),
+      !_vm.room.is_read
+        ? _c(
+            "span",
+            { staticClass: "d-inline-flex float-right badge badge-primary" },
+            [_vm._v("New")]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _vm.room.messages.length > 0
-        ? _c("p", { staticClass: "d-inline-block chat-content text-muted" }, [
-            _vm._v(
-              _vm._s(
-                _vm.room.messages[_vm.room.messages.length - 1].user +
-                  ": " +
-                  _vm.room.messages[_vm.room.messages.length - 1].message
+        ? _c(
+            "p",
+            {
+              staticClass: "d-inline-block chat-content",
+              class: _vm.room.is_read
+                ? "text-muted"
+                : "text-dark font-weight-bold"
+            },
+            [
+              _vm._v(
+                "\n        " +
+                  _vm._s(
+                    _vm.room.messages[_vm.room.messages.length - 1].message
+                  ) +
+                  "\n    "
               )
-            )
-          ])
+            ]
+          )
         : _vm._e()
     ]
   )
@@ -60755,7 +60775,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.recent-chat[data-v-0021b6f6]\r\n{\r\n    padding: 0px;\n}\n.list-group[data-v-0021b6f6]{\r\n    height: 65vh;\r\n    overflow-y: scroll;\r\n    overflow-x: -moz-scrollbars-none;\r\n    background-color: #f9f9f9;\n}\n.list-group[data-v-0021b6f6]::-webkit-scrollbar-track\r\n{\r\n\r\n    background-color: #f1f1f1;\n}\n.list-group[data-v-0021b6f6]::-webkit-scrollbar\r\n{\r\n    width: 6px;\r\n    background-color: #007bff;\n}\n.list-group[data-v-0021b6f6]::-webkit-scrollbar-thumb\r\n{\r\n    background-color: #007bff;\n}\n.header-recent-chat[data-v-0021b6f6]\r\n{\r\n    border:none;\r\n    background-color: #f1f1f1;\n}\n.list-group-item[data-v-0021b6f6]\r\n{\r\n    border-radius: 0px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -60771,6 +60791,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
 //
 //
 //
@@ -60794,13 +60817,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.orderBy(_vm.rooms, "idx"), function(room) {
-      return _c("room", { key: room.idx, attrs: { room: room } })
-    }),
-    1
-  )
+  return _c("div", { staticClass: "recent-chat" }, [
+    _c("li", { staticClass: "header-recent-chat list-group-item" }, [
+      _vm._v("Recent Chats")
+    ]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "list-recent-chat list-group" },
+      _vm._l(_vm.orderBy(_vm.rooms, "idx"), function(room) {
+        return _c("room", { key: room.idx, attrs: { room: room } })
+      }),
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60898,7 +60928,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-pannel[data-v-31ccf238]{\n    overflow-y: scroll;\n    height: 400px;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar-track\n{\n\n    background-color: white;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar\n{\n    width: 6px;\n    background-color: #007bff;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar-thumb\n{\n    background-color: #007bff;\n}\n", ""]);
+exports.push([module.i, "\n.chat-pannel[data-v-31ccf238]{\n    overflow-y: scroll;\n    height: 66vh;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar-track\n{\n\n    background-color: white;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar\n{\n    width: 6px;\n    background-color: #007bff;\n}\n.chat-pannel[data-v-31ccf238]::-webkit-scrollbar-thumb\n{\n    background-color: #007bff;\n}\n.messege-panel-header[data-v-31ccf238]{\n    height: 12vh;\n    border-radius: 0px;\n    padding-left: 5rem;\n    border-left: none;\n    border-top: none;\n    border-color: #f1f1f1;\n    background-color: transparent;\n}\n.chat-composer[data-v-31ccf238]\n{\n    margin: 0px;\n    margin: auto;\n    padding: 0px;\n    height: 14vh;\n    width: 76%;\n}\n.chat-composer-input[data-v-31ccf238]\n{\n    min-height: 60px;\n    width: 40%;\n    margin: auto;\n    background-color: #ced4da;\n}\n.send-btn[data-v-31ccf238]\n{\n    height: 60px;\n    min-width: 4rem ;\n    padding: 0px;\n    border: none;\n    background-color: #ced4da;\n}\ninput:focus .btn[data-v-31ccf238]:focus, .btn[data-v-31ccf238]:active, .btn[data-v-31ccf238]:hover{\n    -webkit-box-shadow: none!important;\n            box-shadow: none!important;\n    outline: 0;\n}\n", ""]);
 
 // exports
 
@@ -60918,6 +60948,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60982,8 +61022,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.curr_room_stt
     ? _c("div", { staticClass: "col-lg-8" }, [
-        _c("li", { staticClass: "list-group-item active" }, [
-          _vm._v(" " + _vm._s(_vm.curr_room.name))
+        _c("li", { staticClass: "messege-panel-header list-group-item" }, [
+          _c("h4", { staticClass: "text-secondary" }, [
+            _vm._v(_vm._s(_vm.curr_room.name))
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -61011,41 +61053,67 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.message,
-              expression: "message"
-            }
-          ],
-          staticClass: "list-group-item",
-          staticStyle: { width: "100%" },
-          attrs: { type: "text", placeholder: "Compose message" },
-          domProps: { value: _vm.message },
-          on: {
-            keyup: function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
+        _c("div", { staticClass: "chat-composer input-group" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message"
               }
-              return _vm.send($event)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+            ],
+            staticClass: "chat-composer-input form-control m-0",
+            attrs: { type: "text", placeholder: "Compose message here..." },
+            domProps: { value: _vm.message },
+            on: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.send($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.message = $event.target.value
               }
-              _vm.message = $event.target.value
             }
-          }
-        })
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("button", { staticClass: "send-btn btn", attrs: { type: "button" } }, [
+        _c("i", { staticClass: "far fa-grin-squint text-secondary fa-lg" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c("button", { staticClass: "send-btn btn", attrs: { type: "button" } }, [
+        _c("i", { staticClass: "fas fa-paper-plane text-secondary" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -61141,7 +61209,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61161,8 +61229,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-//
-//
 //
 //
 //
@@ -61219,16 +61285,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "row no-gutters" },
     [
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("li", { staticClass: "list-group-item active" }, [
-          _vm._v("Recent Chats")
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-group" }, [_c("recentchatpannel")], 1)
-      ]),
+      _c(
+        "div",
+        { staticClass: "col-lg-3" },
+        [
+          _c("account-pannel", { staticClass: "row" }),
+          _vm._v(" "),
+          _c("recentchatpannel", { staticClass: "col" })
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("messagepannel", { staticClass: "col-lg-8" })
+      _c("messagepannel", { staticClass: "col-lg-9" })
     ],
     1
   )
@@ -61248,6 +61318,211 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(85)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(87)
+/* template */
+var __vue_template__ = __webpack_require__(88)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-14f426f4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/MyAccount.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14f426f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-14f426f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(86);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("6e92da9f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14f426f4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MyAccount.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14f426f4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MyAccount.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.cpn-container[data-v-14f426f4]{\n    margin: 0px;\n    border-radius: 0px;\n    padding: 15px;\n    border-top: none;\n    border-color: #f1f1f1;\n    min-height: 5rem;\n}\n.search-btn[data-v-14f426f4]\n{\n    border: 1px solid #ced4da;\n    margin-top: 20px;\n    margin-bottom: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_filters__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_filters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_filters__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+    mounted: function mounted() {},
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser'])),
+    methods: {
+        chat_this_room: function chat_this_room() {
+            this.$store.commit('set_crr_room', this.room.id);
+        }
+    }
+}, 'mounted', function mounted() {
+    var _this = this;
+
+    var room_id = this.room.id;
+    Echo.private('Chat-Room.RoomID-' + room_id).listen('Chat', function (data) {
+        _this.$store.commit('add_message', data);
+    });
+}));
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "cpn-container text-left btn btn-block" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("p", { staticClass: "d-inline-block text-dark chat-title" }, [
+      _vm._v(_vm._s(_vm.inuser))
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fas fa-user-circle fa-3x align-middle" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass:
+          "search-btn form-control text-left btn btn-outline-secondary",
+        attrs: { type: "button" }
+      },
+      [
+        _c("i", { staticClass: "fas fa-search " }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Find partner")])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14f426f4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -1,6 +1,8 @@
 <template>
     <div class="col-lg-8" v-if="curr_room_stt">
-        <li class="list-group-item active"> {{curr_room.name}}</li>
+        <li class="messege-panel-header list-group-item">
+            <h4 class="text-secondary">{{curr_room.name}}</h4>
+        </li>
         <ul class="list-group chat-pannel p-2" v-chat-scroll>
             <message v-for="(item, index) in curr_room.messages" :key="index"
                      v-bind:msg_data="{
@@ -11,7 +13,15 @@
                      }" >
             </message>
         </ul>
-        <input style="width: 100%" type="text" class="list-group-item" placeholder="Compose message" v-model="message" v-on:keyup.enter="send">
+        <div class="chat-composer input-group" >
+            <div class="input-group-prepend">
+                <button class="send-btn btn" type="button"><i class="far fa-grin-squint text-secondary fa-lg"></i></button>
+            </div>
+            <input class="chat-composer-input form-control m-0" type="text" placeholder="Compose message here..." v-model="message" v-on:keyup.enter="send">
+            <div class="input-group-append">
+                <button class="send-btn btn" type="button"><i class="fas fa-paper-plane text-secondary"></i></button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -40,7 +50,7 @@
 <style scoped>
     .chat-pannel{
         overflow-y: scroll;
-        height: 400px;
+        height: 66vh;
     }
     .chat-pannel::-webkit-scrollbar-track
     {
@@ -57,5 +67,45 @@
     .chat-pannel::-webkit-scrollbar-thumb
     {
         background-color: #007bff;
+    }
+
+    .messege-panel-header{
+        height: 12vh;
+        border-radius: 0px;
+        padding-left: 5rem;
+        border-left: none;
+        border-top: none;
+        border-color: #f1f1f1;
+        background-color: transparent;
+    }
+
+    .chat-composer
+    {
+        margin: 0px;
+        margin: auto;
+        padding: 0px;
+        height: 14vh;
+        width: 76%;
+    }
+
+    .chat-composer-input
+    {
+        min-height: 60px;
+        width: 40%;
+        margin: auto;
+        background-color: #ced4da;
+    }
+
+    .send-btn
+    {
+        height: 60px;
+        min-width: 4rem ;
+        padding: 0px;
+        border: none;
+        background-color: #ced4da;
+    }
+    input:focus .btn:focus, .btn:active, .btn:hover{
+        box-shadow: none!important;
+        outline: 0;
     }
 </style>

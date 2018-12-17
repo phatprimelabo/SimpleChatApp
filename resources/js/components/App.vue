@@ -1,12 +1,10 @@
 <template>
-    <div>
-        <div class="col-lg-4">
-            <li class="list-group-item active">Recent Chats</li>
-            <ul class="list-group">
-                <recentchatpannel></recentchatpannel>
-            </ul>
+    <div class="row no-gutters">
+        <div class="col-lg-3">
+            <account-pannel class="row"></account-pannel>
+            <recentchatpannel class="col"></recentchatpannel>
         </div>
-        <messagepannel class="col-lg-8"></messagepannel>
+        <messagepannel class="col-lg-9"></messagepannel>
     </div>
 </template>
 
@@ -31,5 +29,4 @@
 </script>
 
 <style scoped>
-
 </style>

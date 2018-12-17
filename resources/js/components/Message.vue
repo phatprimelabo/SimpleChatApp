@@ -21,7 +21,6 @@
 </script>
 <style scoped>
     .container{
-        padding-right: 2rem;
         border: none;
     }
     .container .chat-content {
@@ -32,7 +31,7 @@
         padding-right: 2rem;
         min-width: 16rem;
         border-radius: 3px;
-        background-color: #DEEDF4;
+        background-color: #F1F1F1;
     }
     .container .chat-title {
         border-radius: 3px;

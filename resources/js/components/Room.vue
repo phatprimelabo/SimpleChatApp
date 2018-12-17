@@ -1,17 +1,20 @@
 <template>
-    <button class="cpn-container text-left btn btn-block" v-bind:class=" room.is_read? 'btn-outline-info' : 'btn-outline-warning' " v-on:click="chat_this_room">
+    <div class="cpn-container text-left btn btn-block" v-on:click="chat_this_room">
         <a href="#"><i v-if="!is_sameuser && !is_income" class="d-inline-block fas fa-user-circle fa-lg"></i></a>
-        <p class="d-inline-block text-primary chat-title">{{room.name}}</p>
+        <p class="d-inline-block text-dark chat-title">{{room.name}}</p>
+        <span v-if="!room.is_read" class="d-inline-flex float-right badge badge-primary">New</span>
         <br>
-        <p v-if="room.messages.length>0" class="d-inline-block chat-content text-muted">{{room.messages[room.messages.length-1].user+': '+room.messages[room.messages.length-1].message}}</p>
-    </button>
+        <p v-if="room.messages.length>0"
+           class="d-inline-block chat-content"
+           v-bind:class="room.is_read?'text-muted':'text-dark font-weight-bold'">
+            {{room.messages[room.messages.length-1].message}}
+        </p>
+    </div>
 </template>
 
 <script>
     export default {
         props: ['room'],
-        mounted(){
-        },
         methods:{
             chat_this_room(){
                 this.$store.commit('set_crr_room', this.room.id);
@@ -27,7 +30,12 @@
 </script>
 <style scoped>
     .cpn-container{
+        margin: 0px;
+        border-radius: 0px;
         padding: 15px;
+        border-top: none;
+        border-color: #f1f1f1;
+        min-height: 5rem;
     }
 
     .chat-content {

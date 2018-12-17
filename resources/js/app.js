@@ -31,10 +31,12 @@ import {store} from './store/store'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('message', require('./components/Message.vue'));
-Vue.component('room', require('./components/Room.vue'));
+
+Vue.component('account-pannel', require('./components/MyAccount.vue'));
 Vue.component('recentchatpannel', require('./components/RecentChatPannel.vue'));
+Vue.component('room', require('./components/Room.vue'));
 Vue.component('messagepannel', require('./components/MessagePannel.vue'));
+Vue.component('message', require('./components/Message.vue'));
 Vue.component('app', require('./components/App.vue'));
 
 /**
