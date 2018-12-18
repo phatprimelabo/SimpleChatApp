@@ -60932,11 +60932,19 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            message: ''
+            message: '',
+            chatpannel: {},
+            scroll_Y: 0
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser', 'curr_room', 'curr_room_stt'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser', 'curr_room', 'curr_room_stt']), {
+        handleScroll_computed: function handleScroll_computed() {
+            if (this.chat_pannel) {
+                console.log('i captured it');
+            }
+        }
+    }),
     watch: {},
     methods: {
         send: function send() {
@@ -60960,9 +60968,17 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                     }
                 }, _callee, _this);
             }))();
+        },
+        handleScroll: function handleScroll(element) {
+            this.scroll_Y = this.$refs.$element.scrollY;
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.$nextTick(function () {
+            this.chatpannel = this.$refs;
+            console.log(this.chatpannel);
+        });
+    }
 });
 
 /***/ }),
@@ -60995,7 +61011,9 @@ var render = function() {
                   expression: "{always: false, smooth: true}"
                 }
               ],
-              staticClass: "chat-pannel w-100"
+              ref: "chat_pannel",
+              staticClass: "chat-pannel w-100",
+              on: { scroll: _vm.handleScroll }
             },
             _vm._l(_vm.curr_room.messages, function(item, index) {
               return _c("message", {

@@ -5,7 +5,7 @@
             <p class="text-secondary">Online</p>
         </li>
         <div class="py-3">
-            <ul class="chat-pannel w-100" v-chat-scroll="{always: false, smooth: true}">
+            <ul ref="chat_pannel" class="chat-pannel w-100" v-chat-scroll="{always: false, smooth: true}" v-on:scroll="handleScroll">
                 <message v-for="(item, index) in curr_room.messages" :key="index"
                          v-bind:message_data="item"
                          v-bind:is_income="item.user === inuser"
@@ -32,12 +32,18 @@
     export default {
         data(){
             return {
-                message: ''
+                message: '',
+                chatpannel: {},
+                scroll_Y: 0,
             };
         },
         computed:{
             ...mapGetters(['inuser','curr_room','curr_room_stt']),
-
+            handleScroll_computed(){
+                if(this.chat_pannel){
+                    console.log('i captured it')
+                }
+            }
         },
         watch:{
         },
@@ -46,8 +52,15 @@
                 await this.$store.commit('send_message', {room_id: this.curr_room.id, message: this.message});
                 this.message='';
             },
+            handleScroll(element){
+               this.scroll_Y = this.$refs.$element.scrollY;
+            }
         },
         mounted(){
+            this.$nextTick(function () {
+                this.chatpannel = this.$refs;
+                console.log(this.chatpannel)
+            })
         }
     }
 </script>
