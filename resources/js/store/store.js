@@ -56,7 +56,6 @@ export const store = new Vuex.Store({
            });
        },
 
-
         //SET CRR CHAT ROOM STT
         set_crr_room: (state, id) => {
             state.curr_room_stt = true;
@@ -65,7 +64,6 @@ export const store = new Vuex.Store({
                 state.rooms.find(room => room.id==id).is_read=1;
             });
         },
-
 
         //CHAT TASK
         send_message: (state, payload) => {    //payload    {room_id: ,message:}
@@ -86,6 +84,13 @@ export const store = new Vuex.Store({
             rooms.unshift(temp_room);
             rooms.forEach((room,index)=>room.idx=index);
             state.rooms = [...rooms];
+        },
+        get_newmsg: (state, payload)=>{
+            //console.log('test');
+            axios.get('/get_curr_room/'+payload.id+'/'+payload.offset)
+                .then((data)=>{
+                    state.rooms.find(room=>room.id===payload.id)[0] = [...data];
+                });
         },
 
         //listern message

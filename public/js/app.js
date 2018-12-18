@@ -59278,6 +59278,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
             });
             state.rooms = [].concat(_toConsumableArray(rooms));
         },
+        get_newmsg: function get_newmsg(state, payload) {
+            //console.log('test');
+            axios.get('/get_curr_room/' + payload.id + '/' + payload.offset).then(function (data) {
+                state.rooms.find(function (room) {
+                    return room.id === payload.id;
+                })[0] = [].concat(_toConsumableArray(data));
+            });
+        },
 
         //listern message
         init_listen_message: function init_listen_message(state) {}
@@ -60933,19 +60941,22 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
     data: function data() {
         return {
             message: '',
-            chatpannel: {},
-            scroll_Y: 0
+            scroll_Y: 0,
+            request_flg: 0
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser', 'curr_room', 'curr_room_stt']), {
-        handleScroll_computed: function handleScroll_computed() {
-            if (this.chat_pannel) {
-                console.log('i captured it');
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['inuser', 'curr_room', 'curr_room_stt'])),
+    watch: {
+        scroll_Y: function scroll_Y(_scroll_Y) {
+            if (_scroll_Y > 50) {
+                this.request_flg = 1;
+            }
+            if (_scroll_Y < 50 && this.request_flg === 1) {
+                //this.get_newmsg();
             }
         }
-    }),
-    watch: {},
+    },
     methods: {
         send: function send() {
             var _this = this;
@@ -60969,16 +60980,19 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 }, _callee, _this);
             }))();
         },
-        handleScroll: function handleScroll(element) {
-            this.scroll_Y = this.$refs.$element.scrollY;
+        get_newmsg: function get_newmsg() {
+            this.$nextTick(function () {
+                this.$store.commit('get_newmsg', { id: this.curr_room.id, offset: this.curr_room.messages.length });
+                this.request_flg = 0;
+            });
+        },
+        handleScroll: function handleScroll() {
+            this.$nextTick(function () {
+                this.scroll_Y = this.$refs.chatcontent.scrollTop;
+            });
         }
     },
-    mounted: function mounted() {
-        this.$nextTick(function () {
-            this.chatpannel = this.$refs;
-            console.log(this.chatpannel);
-        });
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -61011,7 +61025,7 @@ var render = function() {
                   expression: "{always: false, smooth: true}"
                 }
               ],
-              ref: "chat_pannel",
+              ref: "chatcontent",
               staticClass: "chat-pannel w-100",
               on: { scroll: _vm.handleScroll }
             },
@@ -61472,7 +61486,7 @@ if (false) {
 
 __webpack_require__(84);
 __webpack_require__(85);
-(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\xampp\\htdocs\\projects\\SimpleChatApp\\resources\\sass\\chat.scss\""); }());
+(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\xampp\\htdocs\\simplechat\\SimpleChatApp\\resources\\sass\\chat.scss\""); }());
 
 
 /***/ }),
