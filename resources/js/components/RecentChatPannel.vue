@@ -26,9 +26,10 @@
     padding: 0px;
 }
 .list-group{
-    height: 65vh;
+    height: 60vh;
+    width: 100%;
+    overflow-x: hidden;
     overflow-y: scroll;
-    overflow-x: -moz-scrollbars-none;
     background-color: #f9f9f9;
 }
 
@@ -42,16 +43,21 @@
 {
     width: 6px;
     background-color: #007bff;
+    border-radius: 10px;
+    height: 30px;
 }
 
 .list-group::-webkit-scrollbar-thumb
 {
-    background-color: #007bff;
+    background-color: #cfcfcf;
+    border-radius: 10px;
+    height: 30px;
 }
 
 .header-recent-chat
 {
     border:none;
+    height: 8vh;
     background-color: #f1f1f1;
 }
 

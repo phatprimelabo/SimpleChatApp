@@ -28,15 +28,9 @@
             ...mapGetters(['inuser']),
         },
         methods:{
-            chat_this_room(){
-                this.$store.commit('set_crr_room', this.room.id);
-            }
+
         },
         mounted(){
-            let room_id = this.room.id;
-            Echo.private('Chat-Room.RoomID-'+room_id).listen('Chat', data=>{
-                this.$store.commit('add_message',data);
-            });
         }
     }
 </script>
@@ -47,7 +41,7 @@
         padding: 15px;
         border-top: none;
         border-color: #f1f1f1;
-        min-height: 5rem;
+        height: 24vh;
     }
 
     .search-btn

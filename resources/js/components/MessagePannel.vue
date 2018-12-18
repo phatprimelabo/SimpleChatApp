@@ -2,17 +2,18 @@
     <div class="col-lg-8" v-if="curr_room_stt">
         <li class="messege-panel-header list-group-item">
             <h4 class="text-secondary">{{curr_room.name}}</h4>
+            <p class="text-secondary">Online</p>
         </li>
-        <ul class="list-group chat-pannel p-2" v-chat-scroll>
-            <message v-for="(item, index) in curr_room.messages" :key="index"
-                     v-bind:msg_data="{
-                         is_income: item.user==inuser,
-                         is_sameuser: index>0? curr_room.messages[index-1].user==item.user : false,
-                         user: item.user,
-                         content: item.message
-                     }" >
-            </message>
-        </ul>
+        <div class="py-3">
+            <ul class="chat-pannel w-100" v-chat-scroll="{always: false, smooth: true}">
+                <message v-for="(item, index) in curr_room.messages" :key="index"
+                         v-bind:message_data="item"
+                         v-bind:is_income="item.user === inuser"
+                         v-bind:is_sameuser="index===0? false: curr_room.messages[index-1].user === item.user">
+                </message>
+            </ul>
+        </div>
+
         <div class="chat-composer input-group" >
             <div class="input-group-prepend">
                 <button class="send-btn btn" type="button"><i class="far fa-grin-squint text-secondary fa-lg"></i></button>
@@ -22,6 +23,7 @@
                 <button class="send-btn btn" type="button"><i class="fas fa-paper-plane text-secondary"></i></button>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -34,13 +36,16 @@
             };
         },
         computed:{
-            ...mapGetters(['inuser','curr_room','curr_room_stt'])
+            ...mapGetters(['inuser','curr_room','curr_room_stt']),
+
+        },
+        watch:{
         },
         methods:{
             async send(){
                 await this.$store.commit('send_message', {room_id: this.curr_room.id, message: this.message});
                 this.message='';
-            }
+            },
         },
         mounted(){
         }
@@ -51,6 +56,7 @@
     .chat-pannel{
         overflow-y: scroll;
         height: 66vh;
+        margin: 0px;
     }
     .chat-pannel::-webkit-scrollbar-track
     {
@@ -81,30 +87,36 @@
 
     .chat-composer
     {
-        margin: 0px;
+        margin-right: 6px;
         margin: auto;
-        padding: 0px;
-        height: 14vh;
-        width: 76%;
+        height: 12vh;
+        width: 68%;
     }
 
     .chat-composer-input
     {
-        min-height: 60px;
+        min-height: 50px;
         width: 40%;
         margin: auto;
-        background-color: #ced4da;
+        border: none;
+        background-color: #f1f1f1;
     }
 
     .send-btn
     {
-        height: 60px;
+        height: 50px;
         min-width: 4rem ;
         padding: 0px;
         border: none;
-        background-color: #ced4da;
+        background-color: #f1f1f1;
     }
-    input:focus .btn:focus, .btn:active, .btn:hover{
+    .btn:focus, .btn:active, .btn:hover{
+        box-shadow: none!important;
+        outline: 0;
+    }
+
+    .chat-composer-input:focus
+    {
         box-shadow: none!important;
         outline: 0;
     }

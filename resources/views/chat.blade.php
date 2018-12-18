@@ -4,19 +4,9 @@
         <app class="row no-gutters" style="height: 100%;"></app>
     </div>
     <script src="{{asset('js/app.js')}}" ></script>
-    <!--<script>
-        $(document).ready(function(){
-            resizeDiv();
-        });
-
-        window.onresize = function(event) {
-            resizeDiv();
+    <style>
+        body{
+            overflow: hidden;
         }
-
-        function resizeDiv() {
-            vpw = $(window).width();
-            vph = $(window).height();
-            $('#app').css({'height': vph + 'px'});
-        }
-    </script>-->
+    </style>
 @endsection

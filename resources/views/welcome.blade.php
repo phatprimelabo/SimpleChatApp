@@ -85,6 +85,9 @@
                 </div>
 
                 <div class="links">
+                    <a href="/chat">Chat</a>
+                    <a href="/home">About me</a>
+                    <a href="/home">Galery</a>
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>

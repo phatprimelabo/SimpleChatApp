@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 83);
+/******/ 	return __webpack_require__(__webpack_require__.s = 86);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -18737,7 +18737,6 @@ jQuery.fn.extend( {
 	is: function( selector ) {
 		return !!winnow(
 			this,
-
 			// If this is a positional/relative selector, check membership in the returned set
 			// so $("p:first").is("p:last") won't return true for a doc with two "p".
 			typeof selector === "string" && rneedsContext.test( selector ) ?
@@ -61449,16 +61448,17 @@ if (false) {
 }
 
 /***/ }),
-/* 83 */
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(84);
-__webpack_require__(85);
-(function webpackMissingModule() { throw new Error("Cannot find module \"C:\\xampp\\htdocs\\projects\\SimpleChatApp\\resources\\sass\\chat.scss\""); }());
+module.exports = __webpack_require__(87);
 
 
 /***/ }),
-/* 84 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61518,12 +61518,6 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app',
   store: __WEBPACK_IMPORTED_MODULE_3__store_store__["a" /* store */]
 });
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

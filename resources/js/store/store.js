@@ -80,13 +80,11 @@ export const store = new Vuex.Store({
                 room.is_read = 0;
             }
 
-            // THIS FOR STATE-STORE REACTIVITY
+            // THIS FOR STATE-STORE REACTIVITY reObject-assign
             let rooms = [...state.rooms];
-            let temp_room = rooms[room_index];
-            rooms[room_index] = rooms[0]; // WANING 0
-            rooms[room_index].idx = room_index;
-            rooms[0] = temp_room;
-            rooms[0].idx=0;
+            let temp_room = rooms.splice(room_index,1)[0];
+            rooms.unshift(temp_room);
+            rooms.forEach((room,index)=>room.idx=index);
             state.rooms = [...rooms];
         },
 
