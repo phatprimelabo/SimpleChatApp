@@ -33,7 +33,7 @@ Route::get('/getrooms', function(){
             if ($room->type == 1){
                 $modify_room_name = $room->users()->where('user_id','<>',Auth::user()->id)->first()->name;
             }
-            $messages_by_room = $room->messages()->orderBy('id', 'desc')->take(20)->get();
+            $messages_by_room = $room->messages()->orderBy('id', 'desc')->take(20)->get()->reverse()->values();
             $messages=[];
             foreach ($messages_by_room as $item){
                 $messages[] = ['user'=>$item->user()->first()->name, 'message'=>$item->content];
@@ -49,10 +49,15 @@ Route::get('/getrooms', function(){
 Route::get('/get_curr_room/{id}/{offset}', function($id, $offset){
     if(Auth::user()){
 
-        $messages = Message::where('room_id', $id)->orderBy('id', 'desc')->offset($offset)->take(20)->get();
-        $rooms_datas_response = ['id'=>$id, 'messages' => $messages];
-
-        return response(json_encode($rooms_datas_response, JSON_UNESCAPED_UNICODE));
+        $messages_by_room = Message::where('room_id', $id)->orderBy('id', 'desc')->offset($offset)->take(20)->get()->reverse()->values();
+        $messages = [];
+        if($messages_by_room->count()>0){
+            foreach ($messages_by_room as $item){
+                $messages[] = ['user'=>$item->user()->first()->name, 'message'=>$item->content];
+            }
+            $rooms_datas_response = ['id'=>$id, 'messages' => $messages];
+            return response(json_encode($rooms_datas_response, JSON_UNESCAPED_UNICODE));
+        }
     }
 
 });

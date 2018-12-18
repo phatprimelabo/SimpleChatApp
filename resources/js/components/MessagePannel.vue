@@ -11,6 +11,7 @@
                          v-bind:is_income="item.user === inuser"
                          v-bind:is_sameuser="index===0? false: curr_room.messages[index-1].user === item.user">
                 </message>
+                <!--<li class="list-group-item" v-for="(item, index) in curr_room.messages" :key="index">{{item.message}}</li>-->
             </ul>
         </div>
 
@@ -34,6 +35,7 @@
             return {
                 message: '',
                 scroll_Y: 0,
+                height_scroll: 50,
                 request_flg: 0,
             };
         },
@@ -42,25 +44,36 @@
         },
         watch:{
             scroll_Y: function(scroll_Y){
-                if (scroll_Y>50){
+                if (scroll_Y>this.height_scroll){
                     this.request_flg = 1;
+                    setTimeout(()=>{
+
+                    },300);
                 }
-                if (scroll_Y<50 && this.request_flg===1){
-                    //this.get_newmsg();
+                if (scroll_Y<this.height_scroll && this.request_flg===1){
+                    this.get_newmsg();
+                    this.set_scroll_after_request_more_msg();
+                    this.request_flg=0;
                 }
             }
         },
         methods:{
-            async send(){
-                await this.$store.commit('send_message', {room_id: this.curr_room.id, message: this.message});
-                this.message='';
-            },
             get_newmsg(){
                 this.$nextTick( function () {
                     this.$store.commit('get_newmsg',{id: this.curr_room.id, offset: this.curr_room.messages.length});
                     this.request_flg= 0;
                 });
             },
+            set_scroll_after_request_more_msg(){
+                this.$nextTick( function () {
+
+                });
+            },
+            async send(){
+                await this.$store.commit('send_message', {room_id: this.curr_room.id, message: this.message});
+                this.message='';
+            },
+
             handleScroll(){
                 this.$nextTick(function () {
                     this.scroll_Y = this.$refs.chatcontent.scrollTop;
@@ -78,6 +91,10 @@
         overflow-y: scroll;
         height: 66vh;
         margin: 0px;
+    }
+    .stop-scrolling {
+        height: 100%;
+        overflow: hidden;
     }
     .chat-pannel::-webkit-scrollbar-track
     {

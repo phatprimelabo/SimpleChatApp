@@ -9,7 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vue from 'vue';
+
 import VueChatScroll from 'vue-chat-scroll';
 Vue.use(VueChatScroll);
 
@@ -44,7 +44,10 @@ Vue.component('app', require('./components/App.vue'));
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-new Vue({
-    el: '#app',
-    store,
-});
+window.onload=function () {
+    new Vue({
+        el: '#app',
+        store,
+    });
+}
+

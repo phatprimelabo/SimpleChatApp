@@ -1,6 +1,6 @@
 <template>
     <div class="cpn-container text-left btn btn-block" v-on:click="chat_this_room">
-        <a href="#"><i v-if="!is_sameuser && !is_income" class="d-inline-block fas fa-user-circle fa-lg"></i></a>
+        <a href="#"><i class="d-inline-block fas fa-user-circle fa-lg"></i></a>
         <p class="d-inline-block text-dark chat-title">{{room.name}}</p>
         <span v-if="!room.is_read" class="d-inline-flex float-right badge badge-primary">New</span>
         <br>

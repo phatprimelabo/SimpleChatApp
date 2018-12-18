@@ -56,7 +56,6 @@ window.Echo = new Echo({
     encrypted: true
 });
 
-import Pusher from 'pusher-js';
 
 Array.prototype.swap = (indexA, indexB) => {
     let temp = this[indexA];

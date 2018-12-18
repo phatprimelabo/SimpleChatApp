@@ -86,16 +86,15 @@ export const store = new Vuex.Store({
             state.rooms = [...rooms];
         },
         get_newmsg: (state, payload)=>{
-            //console.log('test');
             axios.get('/get_curr_room/'+payload.id+'/'+payload.offset)
                 .then((data)=>{
-                    state.rooms.find(room=>room.id===payload.id)[0] = [...data];
-                });
+                    let rooms_update = [...state.rooms];
+                    rooms_update.find(room=>room.id ===payload.id).messages = data.data.messages.concat(rooms_update.find(room=>room.id ===payload.id).messages.concat());
+                    state.rooms = [...rooms_update];
+                    console.log(rooms_update);
+                }).catch((e)=>{});
         },
 
-        //listern message
-        init_listen_message: state => {
-        }
     },
     actions:{
         init_getname: ({commit})=>{
@@ -107,7 +106,6 @@ export const store = new Vuex.Store({
         init_listenChatApp: async ({commit})=>{
             await commit('init_getname');
             await commit('init_getrooms');
-            commit('init_listen_message');
         }
     }
 });
