@@ -25,7 +25,7 @@
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="height: 8vh">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="height: 6vh; background-color: #f1f1f1">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}

@@ -1,29 +1,6 @@
 <template>
     <div class="col">
-        <li class="messege-panel-header list-group-item">
-            <h4 v-if="curr_room" class="text-secondary">{{curr_room.name}}</h4>
-            <p class="text-secondary">Online</p>
-        </li>
-        <div v-if="curr_room" class="py-3">
-            <ul ref="chatcontent" class="chat-pannel w-100" v-chat-scroll="{always: false, smooth: true}" v-on:scroll="handleScroll">
-                <message v-for="(item, index) in curr_room.messages" :key="index"
-                         v-bind:message_data="item"
-                         v-bind:is_income="item.user === inuser"
-                         v-bind:is_sameuser="index===0? false: curr_room.messages[index-1].user === item.user">
-                </message>
-            </ul>
-        </div>
-
-        <div class="chat-composer input-group" >
-            <div class="input-group-prepend">
-                <button class="send-btn btn" type="button"><i class="far fa-grin-squint text-secondary fa-lg"></i></button>
-            </div>
-            <input class="chat-composer-input form-control m-0" type="text" placeholder="Compose message here..." v-model="message" v-on:keyup.enter="send">
-            <div class="input-group-append">
-                <button class="send-btn btn" type="button"><i class="fas fa-paper-plane text-secondary"></i></button>
-            </div>
-        </div>
-
+        <h2>Welcome!</h2>
     </div>
 </template>
 

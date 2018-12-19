@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
         inuser: '',
         messages: [], //{room_id: , user: , message}
         rooms_render: true,
-        is_innit: true,
+        pages_visted: 0,
         rooms_string:'',
         rooms: [],  //{(DB)id: ,idx, DBname , messages:{user: , message: }}
     },
@@ -90,7 +90,6 @@ export const store = new Vuex.Store({
                     let rooms_update = [...state.rooms];
                     rooms_update.find(room=>room.id ===payload.id).messages = data.data.messages.concat(rooms_update.find(room=>room.id ===payload.id).messages.concat());
                     state.rooms = [...rooms_update];
-                    console.log(rooms_update);
                 }).catch((e)=>{});
         },
 

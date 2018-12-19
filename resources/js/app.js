@@ -49,13 +49,12 @@ Vue.component('app', require('./components/App.vue'));
  */
 
 router.beforeEach((to, from, next) => {
-    // if(to.path!=='/' && store.state.is_innit===true){
-    //     console.log('abcd')
-    //     next('/');
-    // }
-    // else {
-    //     next();
-    // }
+    if(to.path!=='/' && store.state.pages_visted==0)
+    next('/');
+    else{
+        store.state.pages_visted++;
+        next();
+    }
 });
 
 window.onload=function () {
