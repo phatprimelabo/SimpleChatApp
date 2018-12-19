@@ -1,5 +1,5 @@
 <template>
-    <div class="col-lg-8" v-if="curr_room_stt">
+    <div class="col">
         <li class="messege-panel-header list-group-item">
             <h4 class="text-secondary">{{curr_room.name}}</h4>
             <p class="text-secondary">Online</p>
@@ -37,10 +37,14 @@
                 scroll_Y: 0,
                 height_scroll: 50,
                 request_flg: 0,
+
             };
         },
         computed:{
-            ...mapGetters(['inuser','curr_room','curr_room_stt']),
+            ...mapGetters(['inuser']),
+            curr_room() {
+                return this.$store.getters.curr_room(this.$route.params.roomId);
+            }
         },
         watch:{
             scroll_Y: function(scroll_Y){
@@ -78,10 +82,16 @@
                 this.$nextTick(function () {
                     this.scroll_Y = this.$refs.chatcontent.scrollTop;
                 })
+            },
+            fetch_room(){
+                this.curr_room = {};
             }
         },
         mounted(){
 
+        },
+        created(){
+            this.fetch_room();
         }
     }
 </script>

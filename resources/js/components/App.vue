@@ -4,7 +4,7 @@
             <account-pannel class="row"></account-pannel>
             <recentchatpannel class="col"></recentchatpannel>
         </div>
-        <messagepannel class="col-lg-9"></messagepannel>
+        <div class="col-lg-9"><router-view></router-view></div>
     </div>
 </template>
 

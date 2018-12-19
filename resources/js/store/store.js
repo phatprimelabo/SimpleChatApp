@@ -7,8 +7,6 @@ export const store = new Vuex.Store({
     state: {
         inuser: '',
         messages: [], //{room_id: , user: , message}
-        curr_room_stt: false,
-        curr_room: null,
         rooms_render: true,
         rooms_string:'',
         rooms: [],  //{(DB)id: ,idx, DBname , messages:{user: , message: }}
@@ -22,8 +20,8 @@ export const store = new Vuex.Store({
         inuser: state => {
             return state.inuser;
         },
-        curr_room: state => {
-            return state.rooms.find(room=>room.id == state.curr_room);
+        curr_room: state => roomId => {
+            return state.rooms.find(room=>room.id === roomId);
         },
         curr_room_stt: state => {
             return state.curr_room_stt;
