@@ -1,17 +1,16 @@
 <template>
     <div class="col">
         <li class="messege-panel-header list-group-item">
-            <h4 class="text-secondary">{{curr_room.name}}</h4>
+            <h4 v-if="curr_room" class="text-secondary">{{curr_room.name}}</h4>
             <p class="text-secondary">Online</p>
         </li>
-        <div class="py-3">
+        <div v-if="curr_room" class="py-3">
             <ul ref="chatcontent" class="chat-pannel w-100" v-chat-scroll="{always: false, smooth: true}" v-on:scroll="handleScroll">
                 <message v-for="(item, index) in curr_room.messages" :key="index"
                          v-bind:message_data="item"
                          v-bind:is_income="item.user === inuser"
                          v-bind:is_sameuser="index===0? false: curr_room.messages[index-1].user === item.user">
                 </message>
-                <!--<li class="list-group-item" v-for="(item, index) in curr_room.messages" :key="index">{{item.message}}</li>-->
             </ul>
         </div>
 
@@ -37,13 +36,12 @@
                 scroll_Y: 0,
                 height_scroll: 50,
                 request_flg: 0,
-
             };
         },
         computed:{
             ...mapGetters(['inuser']),
             curr_room() {
-                return this.$store.getters.curr_room(this.$route.params.roomId);
+               return this.$store.getters.curr_room(this.$route.params.roomId);
             }
         },
         watch:{
@@ -56,7 +54,6 @@
                 }
                 if (scroll_Y<this.height_scroll && this.request_flg===1){
                     this.get_newmsg();
-                    this.set_scroll_after_request_more_msg();
                     this.request_flg=0;
                 }
             }
@@ -66,11 +63,6 @@
                 this.$nextTick( function () {
                     this.$store.commit('get_newmsg',{id: this.curr_room.id, offset: this.curr_room.messages.length});
                     this.request_flg= 0;
-                });
-            },
-            set_scroll_after_request_more_msg(){
-                this.$nextTick( function () {
-
                 });
             },
             async send(){
@@ -83,15 +75,19 @@
                     this.scroll_Y = this.$refs.chatcontent.scrollTop;
                 })
             },
-            fetch_room(){
-                this.curr_room = {};
+            async fetch_room(){
             }
         },
         mounted(){
 
         },
+        beforeMount(){
+        },
         created(){
-            this.fetch_room();
+
+        },
+        updated(){
+
         }
     }
 </script>

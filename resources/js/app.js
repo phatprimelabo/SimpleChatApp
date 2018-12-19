@@ -48,6 +48,15 @@ Vue.component('app', require('./components/App.vue'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+router.beforeEach((to, from, next) => {
+    // if(to.path!=='/' && store.state.is_innit===true){
+    //     console.log('abcd')
+    //     next('/');
+    // }
+    // else {
+    //     next();
+    // }
+});
 
 window.onload=function () {
     new Vue({

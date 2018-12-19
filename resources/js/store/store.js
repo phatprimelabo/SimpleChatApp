@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
         inuser: '',
         messages: [], //{room_id: , user: , message}
         rooms_render: true,
+        is_innit: true,
         rooms_string:'',
         rooms: [],  //{(DB)id: ,idx, DBname , messages:{user: , message: }}
     },
