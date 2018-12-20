@@ -1,6 +1,8 @@
-<template>
-    <div class="col">
-        <h2>Welcome!</h2>
+<template >
+    <div class="row align-items-center">
+        <div class="col">
+            <h1 class="text-center">Welcome to my chat application</h1>
+        </div>
     </div>
 </template>
 
@@ -70,75 +72,7 @@
 </script>
 
 <style scoped>
-    .chat-pannel{
-        overflow-y: scroll;
-        height: 70vh;
-        margin: 0px;
-    }
-    .stop-scrolling {
+    .row{
         height: 100%;
-        overflow: hidden;
-    }
-    .chat-pannel::-webkit-scrollbar-track
-    {
-
-        background-color: white;
-    }
-
-    .chat-pannel::-webkit-scrollbar
-    {
-        width: 6px;
-        background-color: #007bff;
-    }
-
-    .chat-pannel::-webkit-scrollbar-thumb
-    {
-        background-color: #007bff;
-    }
-
-    .messege-panel-header{
-        height: 10vh;
-        border-radius: 0px;
-        padding-left: 5rem;
-        border-left: none;
-        border-top: none;
-        border-color: #f1f1f1;
-        background-color: transparent;
-    }
-
-    .chat-composer
-    {
-        margin-right: 6px;
-        margin: auto;
-        height: 12vh;
-        width: 68%;
-    }
-
-    .chat-composer-input
-    {
-        min-height: 50px;
-        width: 40%;
-        margin: auto;
-        border: none;
-        background-color: #f1f1f1;
-    }
-
-    .send-btn
-    {
-        height: 50px;
-        min-width: 4rem ;
-        padding: 0px;
-        border: none;
-        background-color: #f1f1f1;
-    }
-    .btn:focus, .btn:active, .btn:hover{
-        box-shadow: none!important;
-        outline: 0;
-    }
-
-    .chat-composer-input:focus
-    {
-        box-shadow: none!important;
-        outline: 0;
     }
 </style>

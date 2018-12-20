@@ -23,6 +23,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "element-ui": "^2.4.11",
         "laravel-echo": "^1.5.2",
         "pusher": "^2.2.0",
         "pusher-js": "^4.3.1",

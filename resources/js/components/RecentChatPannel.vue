@@ -1,5 +1,5 @@
 <template>
-    <div class="recent-chat" >
+    <div v-if="!is_searching" class="recent-chat" >
         <li class="header-recent-chat list-group-item">Recent Chats</li>
         <ul class="list-recent-chat list-group">
             <room v-for="room in orderBy(rooms, 'idx')" :key="room.idx" v-bind:room="room"></room>
@@ -13,10 +13,11 @@
     export default {
         mixins: [Vue2Filters.mixin],
         computed: {
-            ...mapGetters(['rooms','rooms_string','rooms_render']),
+            ...mapGetters(['rooms','rooms_string','rooms_render', 'is_searching']),
         },
         watch:{
-        }
+
+        },
     }
 </script>
 
@@ -25,8 +26,16 @@
 {
     padding: 0px;
 }
+
+.header-recent-chat
+{
+    border:none;
+    height: 8vh;
+    background-color: #f1f1f1;
+}
+
 .list-group{
-    height: 60vh;
+    height: 62vh;
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -54,12 +63,7 @@
     height: 30px;
 }
 
-.header-recent-chat
-{
-    border:none;
-    height: 8vh;
-    background-color: #f1f1f1;
-}
+
 
 .list-group-item
 {

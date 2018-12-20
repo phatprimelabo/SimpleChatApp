@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
     state: {
         inuser: '',
         messages: [], //{room_id: , user: , message}
+        is_searching: 0,
         rooms_render: true,
         pages_visted: 0,
         rooms_string:'',
@@ -20,6 +21,9 @@ export const store = new Vuex.Store({
         },
         inuser: state => {
             return state.inuser;
+        },
+        is_searching: state => {
+            return state.is_searching;
         },
         curr_room: state => roomId => {
             return state.rooms.find(room=>room.id === roomId);
@@ -55,6 +59,23 @@ export const store = new Vuex.Store({
            });
        },
 
+        //ACCOUNT SETTING AND SEARCHING
+        setSearching: state => {
+            state.is_searching = 1;
+        },
+        setUnSearch: state => {
+            state.is_searching = 0;
+        },
+        searchUser: (state, searchkey) => {
+            axios({
+                method:'get',
+                url:'/getusers/'+searchkey,
+            })
+                .then(function (response) {
+                    console.log(response)
+                });
+        },
+
         //SET CRR CHAT ROOM STT
         set_crr_room: (state, id) => {
             state.curr_room_stt = true;
@@ -66,8 +87,9 @@ export const store = new Vuex.Store({
 
         //CHAT TASK
         send_message: (state, payload) => {    //payload    {room_id: ,message:}
-                axios.post('/send', payload);
+             axios.post('/send', payload);
         },
+
         add_message: (state, payload) => {
             state.messages.push(payload);               //Asynchronus problem here
             let room_index = state.rooms.findIndex(room=>room.id == payload.room_id);

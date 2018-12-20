@@ -18,10 +18,10 @@ Vue.use(VueChatScroll);
 import Vue2Filters from 'vue2-filters'
 Vue.use(Vue2Filters);
 
-import VueRouter from 'vue-router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/main.css'
+Vue.use(ElementUI);
 
-import {store} from './store/store'
-import router from './router/router'
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -48,6 +48,11 @@ Vue.component('app', require('./components/App.vue'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+
+
+import {store} from './store/store'
+import router from './router/router'
 router.beforeEach((to, from, next) => {
     if(to.path!=='/' && store.state.pages_visted==0)
     next('/');
