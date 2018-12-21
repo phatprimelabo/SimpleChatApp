@@ -36,6 +36,8 @@ Vue.use(ElementUI);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 Vue.component('account-pannel', require('./components/MyAccount.vue'));
+Vue.component('search-result-panel', require('./components/SearchResultPanel.vue'));
+Vue.component('search-result-item', require('./components/SearchResultItem.vue'));
 Vue.component('recentchatpannel', require('./components/RecentChatPannel.vue'));
 Vue.component('room', require('./components/Room.vue'));
 Vue.component('messagepannel', require('./components/MessagePannel.vue'));

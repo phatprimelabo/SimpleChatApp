@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
         inuser: '',
         messages: [], //{room_id: , user: , message}
         is_searching: 0,
+        search_result: [],
         rooms_render: true,
         pages_visted: 0,
         rooms_string:'',
@@ -24,6 +25,9 @@ export const store = new Vuex.Store({
         },
         is_searching: state => {
             return state.is_searching;
+        },
+        search_result: state => {
+            return state.search_result;
         },
         curr_room: state => roomId => {
             return state.rooms.find(room=>room.id === roomId);
@@ -72,7 +76,9 @@ export const store = new Vuex.Store({
                 url:'/getusers/'+searchkey,
             })
                 .then(function (response) {
-                    console.log(response)
+                    state.search_result = response.data;
+                    console.log('search success');
+                    console.log(response.data)
                 });
         },
 

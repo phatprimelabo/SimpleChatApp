@@ -16,6 +16,7 @@
 
             </div>
         </div>
+        <search-result-panel v-if="is_searching"></search-result-panel>
     </div>
 </template>
 
@@ -70,6 +71,7 @@
     }
 
     .txtSearch{
+        width: 80%;
         background-color: transparent;
         border: none;
         height: 40px;

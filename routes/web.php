@@ -49,16 +49,11 @@ Route::get('/getrooms', function(){
 });
 
 Route::get('/getusers/{searchkey}', function($searchkey){
-    //$users = User::where('name' , 'like', $search_name)->get(['name']);
     if( Auth::user()){
-        $users = User::get();
-
-// build your second collection with a subset of attributes. this new
-// collection will be a collection of plain arrays, not Users models.
+        $users = User::where('name' , 'like', '%'.$searchkey.'%')->get();
         $subset = $users->map(function ($user) {
             return $user->only(['id', 'name']);
         });
-        //return response($searchkey);
         return response(json_encode($subset, JSON_UNESCAPED_UNICODE));
     }
 });
