@@ -91,7 +91,12 @@ Route::post('/set_curr_chat_room/{room_id}', function($room_id){
         ->update(['is_read'=>1]);
 });
 
-
+Route::get('/test_redis', function(){
+    //Redis::connection();
+    Redis::set('name', 'Taylor');
+    var_dump(Redis::get('name')); exit();
+    //return view('chat');
+});
 
 Auth::routes();
 
